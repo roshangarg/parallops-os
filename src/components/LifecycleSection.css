@@ -1,0 +1,198 @@
+.lifecycle-section {
+  position: relative;
+  width: 100%;
+  background-color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.lifecycle-container {
+  position: relative;
+  width: 100%;
+  max-width: 1920px;
+  height: clamp(500px, 46.875vw, 900px);
+  min-height: clamp(500px, 46.875vw, 900px);
+  background-color: #CAF0A4;
+  opacity: 1;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Video: 1920x1080 at 1920px, top: -89.5px, centered vertically in 900px container */
+.lifecycle-video {
+  position: absolute;
+  top: clamp(-89.5px, -4.661vw, 0px);
+  left: 0;
+  width: 100%;
+  height: clamp(600px, 56.25vw, 1080px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Slanted Watermark Text Overlay: "A LIFECYCLE WITHOUT THE SURPRISES"
+   - Clamped strictly inside the 1828px x 808px inner box
+   - Angle: 24deg (slanted upwards to the right at -24deg in CSS)
+   - Font: Funnel Display, ExtraBold 800, 34px, Line height 100%, uppercase
+   - Color: #B9E79E with Monotone noise (size 0.5, density 64%, color #0000008A)
+   - Stacking: Above DitherVideo (z-index 2), below outer border (z-index 5) and flowers (z-index 8)
+*/
+.lifecycle-slanted-wrapper {
+  position: absolute;
+  top: clamp(28px, 2.3958vw, 46px);
+  bottom: clamp(28px, 2.3958vw, 46px);
+  left: clamp(28px, 2.3958vw, 46px);
+  right: clamp(28px, 2.3958vw, 46px);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.lifecycle-slanted-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 240%;
+  height: 280%;
+  transform: translate(-50%, -50%) rotate(-24deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(14px, 1.406vw, 27px);
+}
+
+.lifecycle-slanted-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+  gap: clamp(20px, 1.979vw, 38px);
+  flex-shrink: 0;
+  will-change: transform;
+}
+
+.lifecycle-slanted-text {
+  font-family: var(--font-display, 'Funnel Display', sans-serif);
+  font-weight: 800;
+  font-style: normal;
+  font-size: clamp(16px, 1.7708vw, 34px);
+  line-height: 1;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  color: #B9E79E;
+  flex-shrink: 0;
+
+  /* Monotone noise effect (size 0.5, density 64%, color #0000008A) */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cfilter id='lmn-noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.25' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.64 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23lmn-noise)' opacity='0.54'/%3E%3C/svg%3E"),
+    linear-gradient(#B9E79E, #B9E79E);
+  background-repeat: repeat, no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  user-select: none;
+}
+
+/* Foreground Flowers Image: 1920x754 at 1920px, top: 146.19px (anchored to bottom of 900px container) */
+.lifecycle-fg-img {
+  position: absolute;
+  top: clamp(80px, 7.614vw, 146.19px);
+  left: 0;
+  width: 100%;
+  height: clamp(400px, 39.27vw, 754px);
+  object-fit: fill;
+  opacity: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: 9;
+}
+
+/* Perimeter 46px Border Channel with background #1D3E0B */
+.lifecycle-border-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.lifecycle-border-strip-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: clamp(28px, 2.3958vw, 46px);
+  background-color: #1D3E0B;
+}
+
+.lifecycle-border-strip-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: clamp(28px, 2.3958vw, 46px);
+  background-color: #1D3E0B;
+}
+
+.lifecycle-border-strip-left {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: clamp(28px, 2.3958vw, 46px);
+  background-color: #1D3E0B;
+}
+
+.lifecycle-border-strip-right {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: clamp(28px, 2.3958vw, 46px);
+  background-color: #1D3E0B;
+}
+
+/* Framed Inner Box: width 1828px, height 808.1875px, top 46px, left 46px, border 1px solid #E0ECD9 */
+.lifecycle-inner-box {
+  position: absolute;
+  top: clamp(28px, 2.3958vw, 46px);
+  bottom: clamp(28px, 2.3958vw, 46px);
+  left: clamp(28px, 2.3958vw, 46px);
+  right: clamp(28px, 2.3958vw, 46px);
+  border: 1px solid #E0ECD9;
+  box-sizing: border-box;
+  pointer-events: none;
+  z-index: 7;
+}
+
+/* Continuous Perimeter Snake Ticker Canvas */
+.lifecycle-snake-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+  z-index: 9;
+}
+
+/* Horizontal scanlines grid overlay across the complete section */
+.lifecycle-grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(to bottom,
+      transparent 0px,
+      transparent 11px,
+      rgba(224, 236, 217, 0.15) 11px,
+      rgba(224, 236, 217, 0.15) 12px);
+  z-index: 10;
+}

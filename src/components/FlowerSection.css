@@ -1,0 +1,178 @@
+/* ==========================================================================
+   Flower Section Styles
+   ========================================================================== */
+
+.flower-section {
+  position: relative;
+  width: 100%;
+  padding-top: 168px;
+  padding-bottom: 168px;
+  background-color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Center Layout: width: 870.98px; height: 322.98px; gap: 50px */
+.flower-container {
+  width: 870.98px;
+  max-width: 100%;
+  height: 322.98px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+  position: relative;
+  opacity: 1;
+  transform: rotate(0deg);
+  box-sizing: border-box;
+}
+
+/* Left and Right Flower Wrappers (224px x 224px) */
+.flower-side-wrapper {
+  width: 224px;
+  height: 224px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.flower-side-img {
+  width: 224px;
+  height: 224px;
+  object-fit: contain;
+  opacity: 1;
+  transform: rotate(0deg);
+  display: block;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Center Concentric Flower & Rotating Text Box (322.98px x 322.98px) */
+.flower-center-box {
+  position: relative;
+  width: 322.98px;
+  height: 322.98px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  user-select: none;
+  opacity: 1;
+  transform: rotate(0deg);
+}
+
+/* Shared layer positioning for concentric stack */
+.flower-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* SVG Text elements with center transform origin */
+.flower-text-svg {
+  display: block;
+  transform-origin: center center;
+}
+
+/* Layer 1: Large Text Ring (below large flower, clockwise rotation) */
+.flower-text-large-wrap {
+  z-index: 1;
+  width: 291px;
+  height: 290px;
+}
+
+.flower-text-large {
+  width: 291px;
+  height: 290px;
+  animation: flowerRotateClockwise 34s linear infinite;
+}
+
+/* Layer 2: Large Flower (Blue, on top of large text, static) */
+.flower-img-large {
+  z-index: 2;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+/* Layer 3: Medium Text Ring (below medium flower, anticlockwise rotation) */
+.flower-text-medium-wrap {
+  z-index: 3;
+  width: 270px;
+  height: 270px;
+}
+
+.flower-text-medium {
+  width: 270px;
+  height: 270px;
+  animation: flowerRotateAnticlockwise 26s linear infinite;
+}
+
+/* Layer 4: Medium Flower (Brown, on top of medium text, static) */
+.flower-img-medium {
+  z-index: 4;
+  object-fit: contain;
+}
+
+/* Layer 5: Small Text Ring (below small flower, clockwise rotation) */
+.flower-text-small-wrap {
+  z-index: 5;
+  width: 115px;
+  height: 115px;
+}
+
+.flower-text-small {
+  width: 115px;
+  height: 115px;
+  animation: flowerRotateClockwise 18s linear infinite;
+}
+
+/* Layer 6: Small Flower (Red hibiscus, on top of small text, static) */
+.flower-img-small {
+  z-index: 6;
+  object-fit: contain;
+}
+
+/* ==========================================================================
+   Rotation Keyframes
+   ========================================================================== */
+
+@keyframes flowerRotateClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes flowerRotateAnticlockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* ==========================================================================
+   Responsive Scaling
+   ========================================================================== */
+
+@media (max-width: 920px) {
+  .flower-container {
+    transform: scale(min(1, calc((100vw - 40px) / 871)));
+    transform-origin: center center;
+  }
+}

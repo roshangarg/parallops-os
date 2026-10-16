@@ -1,0 +1,341 @@
+.problem-section {
+  position: relative;
+  width: 100%;
+  /* Height dynamically driven by content */
+  /* background-color: transparent; */
+  /* background-color: red; */
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: calc(clamp(14px, 1.9vw, 34px) + clamp(26px, 1.77vw, 34px));
+}
+
+/* Background Layer sitting behind overflowing hero imagery (z-index: 0) */
+.problem-bg-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #040076;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Duotone Noise Overlay (Size 2, Density 54%, Colors #000000 & #E0ECD9 25%) */
+.problem-noise-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 5;
+}
+
+/* Dark duotone noise grain (Size 2 = lower baseFrequency, #000000) */
+.problem-noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='pnb'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.2 -0.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23pnb)' opacity='0.38'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+/* Light duotone noise grain (Size 2 = baseFrequency 0.5, #E0ECD9 25% opacity) */
+.problem-noise-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'%3E%3Cfilter id='pnw'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.878  0 0 0 0 0.925  0 0 0 0 0.851  0 0 0 1.4 -0.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23pnw)' opacity='0.35'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+/* Horizontal scanlines overlay continuing seamlessly from the hero section */
+.problem-grid-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(to bottom,
+      transparent 0px,
+      transparent 11px,
+      rgba(224, 236, 217, 0.15) 11px,
+      rgba(224, 236, 217, 0.15) 12px);
+  z-index: 4;
+}
+
+.problem-content {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* Reduced top padding as requested */
+  padding: clamp(24px, 2.5vw, 48px) 0 0;
+  box-sizing: border-box;
+}
+
+/* Top Section Header: 4 Massive Uppercase Coral/Red Lines Left-Aligned (Figma left: 32px, width: 1856px) */
+.problem-top-header {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1920px;
+  padding: 0 clamp(16px, 1.667vw, 32px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: clamp(4px, 0.35vw, 8px);
+  overflow: visible;
+}
+
+.problem-line {
+  position: relative;
+  z-index: 3;
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.85;
+  letter-spacing: 0;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: left;
+  width: fit-content;
+  max-width: 100%;
+  display: block;
+  overflow: visible;
+
+  /* Monotone noise effect (size 0.5, density 64%, color #0000008A) applied exclusively to the text glyphs */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cfilter id='pmn'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.25' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.64 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23pmn)' opacity='0.54'/%3E%3C/svg%3E"),
+    linear-gradient(#FF4F4F, #FF4F4F);
+  background-repeat: repeat, no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #FF4F4F;
+}
+
+/* Line 1: Hardware driver complexity - exact Figma 111.28px */
+.problem-line-1 {
+  font-size: clamp(28px, 5.796vw, 111.28px);
+}
+
+/* Line 2: Security & access fragment - exact Figma 115.48px */
+.problem-line-2 {
+  font-size: clamp(29px, 6.015vw, 115.48px);
+}
+
+/* Line 3: Stranded trouble shooting - exact Figma 115.46px */
+.problem-line-3 {
+  font-size: clamp(29px, 6.014vw, 115.46px);
+}
+
+/* Line 4: One size fits all os - exact Figma 173.64px */
+.problem-line-4 {
+  font-size: clamp(44px, 9.044vw, 173.64px);
+}
+
+/* Sub Row: 3-column monospaced text (Left, Center, Right) */
+.problem-sub-row {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1856px;
+  padding: 0 clamp(16px, 1.67vw, 32px);
+  margin-top: clamp(24px, 2.6vw, 50px);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  box-sizing: border-box;
+}
+
+.problem-sub-col {
+  font-family: var(--font-mono);
+  font-weight: 100;
+  font-size: clamp(9px, 0.625vw, 12px);
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: #E0ECD9;
+  margin: 0;
+}
+
+/* Left: width 518px, aligned left */
+.problem-sub-left {
+  width: 100%;
+  max-width: clamp(280px, 27vw, 518px);
+  text-align: left;
+}
+
+/* Center: width 180px, centered, single line */
+.problem-sub-center {
+  width: auto;
+  max-width: clamp(140px, 9.4vw, 180px);
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Right: width 518px, aligned right */
+.problem-sub-right {
+  width: 100%;
+  max-width: clamp(280px, 27vw, 518px);
+  text-align: right;
+}
+
+/* Banner Section: complete available width edge-to-edge */
+.problem-banner-wrap {
+  position: relative;
+  width: 100%;
+  height: clamp(380px, 41.15vw, 1000px);
+  margin-top: clamp(16px, 1.8vw, 36px);
+  overflow: hidden;
+}
+
+.problem-banner-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* Banner Text: width 344, height 183, top 2536.79px (307.7px / 38.95%), left 868.86px (45.25%) */
+.problem-banner-text-wrap {
+  position: absolute;
+  top: 38.95%;
+  left: 45.25%;
+  width: clamp(240px, 17.92vw, 344px);
+  z-index: 2;
+  pointer-events: auto;
+}
+
+.problem-banner-text {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(13px, 1.146vw, 22px);
+  line-height: 1.18;
+  letter-spacing: 0;
+  text-align: justify;
+  text-justify: inter-word;
+  text-transform: uppercase;
+  color: #E0ECD9;
+  margin: 0;
+}
+
+/* Bottom Section Header: 4 Massive Uppercase Cream/Sand Lines Left-Aligned (Figma left: 32px, width: 1856px) */
+.problem-bottom-header {
+  position: relative;
+  z-index: 3;
+  width: 100%;
+  max-width: 1920px;
+  padding: 0 clamp(16px, 1.667vw, 32px);
+  margin-top: clamp(11px, 0.51vw, 11px);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: clamp(4px, 0.35vw, 8px);
+  overflow: visible;
+}
+
+.problem-bottom-line {
+  position: relative;
+  z-index: 3;
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 0.85;
+  letter-spacing: 0;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  text-align: left;
+  width: fit-content;
+  max-width: 100%;
+  display: block;
+  overflow: visible;
+
+  /* Monotone noise effect (size 0.5, density 64%, color #0000008A) applied exclusively to the #E0ECD9 text glyphs */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cfilter id='pmn'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.25' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.64 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23pmn)' opacity='0.54'/%3E%3C/svg%3E"),
+    linear-gradient(#E0ECD9, #E0ECD9);
+  background-repeat: repeat, no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #E0ECD9;
+}
+
+/* Line 1: Hardware Abstract - exact Figma 161.71px */
+.problem-bottom-line-1 {
+  font-size: clamp(38px, 8.422vw, 161.71px);
+}
+
+/* Line 2: Policy & security fabric - exact Figma 135.87px */
+.problem-bottom-line-2 {
+  font-size: clamp(32px, 7.077vw, 135.87px);
+}
+
+/* Line 3: Observability & telemetry - exact Figma 123.67px */
+.problem-bottom-line-3 {
+  font-size: clamp(29px, 6.441vw, 123.67px);
+}
+
+/* Line 4: Industry profiled - exact Figma 180.18px */
+.problem-bottom-line-4 {
+  font-size: clamp(42px, 9.384vw, 180.18px);
+}
+
+/* Bottom Divider Bar:
+   - Width: 100% (1920px)
+   - Height: 34px (responsive clamp)
+   - Exact Background Color: #390947
+   - Duotone noise: size 1, density 54%, colors: #000000 & #E0ECD9 (25% opacity)
+   - z-index: 2 sits cleanly at the bottom edge above background
+*/
+.problem-bottom-bar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: clamp(26px, 1.77vw, 34px);
+  background: #390947;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Dark noise specks (#000000, gentle grain preserving #390947 base) */
+.problem-bottom-bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='pnb-bar'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.2 -0.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23pnb-bar)' opacity='0.37'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+/* Light duotone noise specks (#E0ECD9, gentle grain preserving #390947 base) */
+.problem-bottom-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='pnw-bar'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.878  0 0 0 0 0.925  0 0 0 0 0.851  0 0 0 1.4 -0.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23pnw-bar)' opacity='0.34'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}

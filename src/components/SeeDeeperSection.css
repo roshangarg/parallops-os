@@ -1,0 +1,484 @@
+.see-deeper-section {
+  position: relative;
+  width: 100%;
+  background-color: #000000;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.see-deeper-container {
+  position: relative;
+  width: 100%;
+  max-width: 1920px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  box-sizing: border-box;
+}
+
+/* Horizontal scanlines grid overlay across the complete section */
+.see-deeper-grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(to bottom,
+      transparent 0px,
+      transparent 11px,
+      rgba(224, 236, 217, 0.15) 11px,
+      rgba(224, 236, 217, 0.15) 12px);
+  z-index: 10;
+}
+
+/* Main Headline Group (4 lines of ExtraBold 175.04px text with monotone noise)
+   Note: z-index is omitted here (auto) so this wrapper does NOT create an isolated stacking context.
+   This allows individual title lines to stack independently above or below the leaf image (z-index: 6). */
+.see-deeper-headline-group {
+  position: absolute;
+  top: -2.4%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.see-deeper-title-line {
+  position: absolute;
+  left: clamp(16px, 1.666vw, 31.99px);
+  margin: 0;
+  padding: 0 0 0.25em 0;
+  height: auto;
+  font-family: 'Funnel Display', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: clamp(64px, 9.117vw, 175.04px);
+  line-height: 1;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  overflow: visible;
+  color: #E0ECD9;
+  background-color: #E0ECD9;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='sd-txt-noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.2' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.54 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23sd-txt-noise)'/%3E%3C/svg%3E");
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Line 1: SEE DEEPER. (width 1100, top: 5235.44 - 5218.44 = 17px) - Above leaf image */
+.see-deeper-title-line-1 {
+  top: clamp(8px, 0.885vw, 17px);
+  width: clamp(500px, 57.29vw, 1100px);
+  z-index: 8;
+}
+
+/* Line 2: AS IT HAPPENS. (width 1376, top: 5384.77 - 5218.44 = 166.33px) - Above leaf image (z-index 6) */
+.see-deeper-title-line-2 {
+  top: clamp(76px, 8.663vw, 166.33px);
+  width: clamp(620px, 71.67vw, 1376px);
+  z-index: 8;
+}
+
+/* Line 3: NOTHING (width 825, top: 5534.11 - 5218.44 = 315.67px) - Below leaf image (z-index 6) */
+.see-deeper-title-line-3 {
+  top: clamp(144px, 16.44vw, 315.67px);
+  width: clamp(380px, 42.97vw, 825px);
+  z-index: 4;
+}
+
+/* Line 4: HAPPENS UNSEEN. (width 1664, top: 5683.45 - 5218.44 = 465.01px) - Below leaf image (z-index 6) */
+.see-deeper-title-line-4 {
+  top: clamp(212px, 24.22vw, 465.01px);
+  width: clamp(750px, 86.67vw, 1664px);
+  z-index: 4;
+}
+
+/* Floating Overlapping Graphic Image spanning across left and right columns:
+   - Width: 1636.4px (85.23vw at 1920px)
+   - Height: 844px (43.96vw at 1920px)
+   - Top: 102.02px (5320.46px - 5218.44px)
+   - Left: 249.6px (13vw at 1920px)
+*/
+.see-deeper-leaf-img {
+  position: absolute;
+  top: clamp(50px, 5.3135vw, 102.02px);
+  left: clamp(120px, 13vw, 249.6px);
+  width: clamp(750px, 85.23vw, 1636.4px);
+  height: clamp(380px, 43.96vw, 844px);
+  object-fit: fill;
+  opacity: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: 6;
+}
+
+/* Left Column: Width 1222px (63.646vw at 1920px) */
+.see-deeper-left-col {
+  position: relative;
+  width: clamp(320px, 63.646vw, 1222px);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Left Top: width 1222px, height 600px, bg #00487C, duotone noise */
+.see-deeper-left-top {
+  position: relative;
+  width: 100%;
+  min-height: clamp(300px, 31.25vw, 600px);
+  height: clamp(300px, 31.25vw, 600px);
+  background-color: #00487C;
+  opacity: 1;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Duotone Noise Overlay for top box: Size 1, Density 54%, Colors #000000 & #E0ECD940 */
+.see-deeper-top-noise {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Dark noise (#000000, 54% density, size 1) */
+.see-deeper-top-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='sdnb'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.2 -0.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23sdnb)' opacity='0.37'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+/* Light duotone noise (#E0ECD9, ~40% opacity, size 1) */
+.see-deeper-top-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='sdnw'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.878  0 0 0 0 0.925  0 0 0 0 0.851  0 0 0 1.4 -0.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23sdnw)' opacity='0.40'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+/* Left Bottom (Video): width 1222px, height 900px, bg #340064 with duotone noise */
+.see-deeper-left-bottom {
+  position: relative;
+  width: 100%;
+  min-height: clamp(450px, 46.875vw, 900px);
+  height: clamp(450px, 46.875vw, 900px);
+  background-color: #340064;
+  opacity: 1;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Duotone Noise Overlay for bottom box: Size 1, Density 54%, Colors #000000 & #E0ECD940 */
+.see-deeper-bottom-noise {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Dark noise (#000000, 54% density, size 1) */
+.see-deeper-bottom-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='sdbnb'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.2 -0.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23sdbnb)' opacity='0.37'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+/* Light duotone noise (#E0ECD9, ~40% opacity, size 1) */
+.see-deeper-bottom-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='sdbnw'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.878  0 0 0 0 0.925  0 0 0 0 0.851  0 0 0 1.4 -0.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23sdbnw)' opacity='0.40'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+/* Spec text in bottom-left waves box: width 344px, height 50px, top 20.34px, left 32px */
+.see-deeper-spec-text {
+  position: absolute;
+  top: clamp(16px, 1.06vw, 20.34px);
+  left: clamp(20px, 1.67vw, 32px);
+  width: clamp(260px, 17.92vw, 344px);
+  min-height: 50px;
+  font-family: var(--font-mono, 'Azeret Mono', monospace);
+  font-weight: 300;
+  font-style: normal;
+  font-size: clamp(10px, 0.625vw, 12px);
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: justify;
+  text-align-last: left;
+  text-transform: uppercase;
+  color: #E0ECD9;
+  z-index: 5;
+  pointer-events: none;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Video canvas container */
+.see-deeper-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Right Column: Width 698px (36.354vw at 1920px) */
+.see-deeper-right-col {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+/* Right Top Box: 698px x 946px at 1920px (36.354vw x 49.27vw), bg #192C09 */
+.see-deeper-right-top {
+  position: relative;
+  width: 100%;
+  min-height: clamp(500px, 49.27vw, 946px);
+  height: clamp(500px, 49.27vw, 946px);
+  background-color: #192C09;
+  opacity: 1;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Duotone Noise Overlay for right top box: Size 1, Density 54%, Colors #000000 & #E0ECD940 */
+.see-deeper-right-top-noise {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Dark noise (#000000, 54% density, size 1) */
+.see-deeper-right-top-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='sdrtnb'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.2 -0.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23sdrtnb)' opacity='0.37'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+/* Light duotone noise (#E0ECD9, ~40% opacity, size 1) */
+.see-deeper-right-top-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='sdrtnw'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.878  0 0 0 0 0.925  0 0 0 0 0.851  0 0 0 1.4 -0.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23sdrtnw)' opacity='0.40'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+/* Right top image: mix-blend-mode screen (downloaded asset already has orientation baked in) */
+.see-deeper-right-top-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: screen;
+  opacity: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: 2;
+}
+
+/* Spec text in right-top box: width 344px, height 36px, top: 620.34px, left: 312.2px */
+.see-deeper-right-spec-text {
+  position: absolute;
+  top: clamp(320px, 32.31vw, 620.34px);
+  left: clamp(160px, 16.26vw, 312.2px);
+  width: clamp(260px, 17.92vw, 344px);
+  min-height: 36px;
+  font-family: var(--font-mono, 'Azeret Mono', monospace);
+  font-weight: 300;
+  font-style: normal;
+  font-size: clamp(10px, 0.625vw, 12px);
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: justify;
+  text-align-last: left;
+  text-transform: uppercase;
+  color: #E0ECD9;
+  z-index: 5;
+  pointer-events: none;
+  user-select: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Right Bottom Box: Width 698px (36.354vw at 1920px), Height 554px (28.85vw at 1920px), bg #006451 */
+.see-deeper-right-bottom {
+  position: relative;
+  width: 100%;
+  min-height: clamp(280px, 28.85vw, 554px);
+  height: clamp(280px, 28.85vw, 554px);
+  background-color: #006451;
+  opacity: 1;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Duotone Noise Overlay for right bottom box: Size 1, Density 54%, Colors #000000 & #E0ECD940 */
+.see-deeper-right-bottom-noise {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Dark noise (#000000, 54% density, size 1) */
+.see-deeper-right-bottom-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='sdrbnb'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.2 -0.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23sdrbnb)' opacity='0.37'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+/* Light duotone noise (#E0ECD9, ~40% opacity, size 1) */
+.see-deeper-right-bottom-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='sdrbnw'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.878  0 0 0 0 0.925  0 0 0 0 0.851  0 0 0 1.4 -0.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23sdrbnw)' opacity='0.40'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+/* Repeating Background Text Overlay in Right Bottom Box:
+   - Width: 658px (34.27vw at 1920px)
+   - Line height / font size: 45.52px, 100% line-height, cap-height 31px
+   - Position: top 18.51px (6182.95px - 6164.44px), left 20px (1242px - 1222px)
+   - Color: #D7E3D0 with monotone noise (size 0.13, density 64%, color #0000008A)
+   - Blend Mode: Multiply
+*/
+.see-deeper-ticker-wrap {
+  position: absolute;
+  /* top: clamp(10px, 0.964vw, 18.51px); */
+  left: clamp(10px, 1.042vw, 20px);
+  width: clamp(320px, 34.27vw, 658px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2px, 0.28vw, 4px);
+  pointer-events: none;
+  user-select: none;
+  z-index: 2;
+}
+
+.see-deeper-right-bottom .see-deeper-video {
+  z-index: 3;
+}
+
+.see-deeper-ticker-line {
+  margin: 0;
+  padding: 0;
+  font-family: 'Funnel Display', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: clamp(20px, 2.371vw, 45.52px);
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  white-space: nowrap;
+  mix-blend-mode: multiply;
+  color: #D7E3D0;
+  /* background-color: #D7E3D0; */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='sdrbtxtnoise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3.5' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.64 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23sdrbtxtnoise)'/%3E%3C/svg%3E");
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Center Concentric Rotating Badge in Right Bottom Box:
+   - Big Circle (unseenbig.svg, 358x358): Rotates clockwise (24s)
+   - Small Circle (unseenSmall.svg, 332x332, 92.74%): Rotates anticlockwise (18s)
+   - Centered inside the 698x554 box, on top of video (z-index: 4)
+*/
+.see-deeper-badge-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(200px, 18.646vw, 358px);
+  height: clamp(200px, 18.646vw, 358px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  user-select: none;
+  z-index: 4;
+}
+
+.see-deeper-circle-big {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  transform-origin: center center;
+  animation: seeDeeperRotateClockwise 24s linear infinite;
+}
+
+.see-deeper-circle-small {
+  position: absolute;
+  width: 92.74%;
+  height: 92.74%;
+  display: block;
+  object-fit: contain;
+  transform-origin: center center;
+  animation: seeDeeperRotateAnticlockwise 18s linear infinite;
+}
+
+@keyframes seeDeeperRotateClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes seeDeeperRotateAnticlockwise {
+  from {
+    transform: rotate(-54deg);
+  }
+  to {
+    transform: rotate(-414deg);
+  }
+}

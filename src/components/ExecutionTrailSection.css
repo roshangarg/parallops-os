@@ -1,0 +1,453 @@
+.trail-section {
+  position: relative;
+  width: 100%;
+  background-color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  overflow: hidden;
+  box-sizing: border-box;
+  margin-top: -0.8px;
+}
+
+/* 1920px width x 800px height container (2x 960px width, 2x 400px height) */
+.trail-container {
+  position: relative;
+  width: 100%;
+  max-width: 1920px;
+  height: clamp(400px, 41.667vw, 800px);
+  min-height: clamp(400px, 41.667vw, 800px);
+  background-color: #000000;
+  overflow: hidden;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Background Marquee Layer with 12 stacked text rows */
+.trail-bg-marquee {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Each row takes 1/12th of total 800px height (~66.67px) */
+.trail-row {
+  position: relative;
+  width: 100%;
+  height: calc(100% / 12);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Inner track holding two identical groups for seamless looping */
+.trail-track {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: max-content;
+  will-change: transform;
+}
+
+/* Bright lines move right to left (slowed down for smooth, calm glide) */
+.trail-track-left {
+  animation: marquee-scroll-left 55s linear infinite;
+}
+
+/* Dim lines move left to right (slowed down for smooth, calm glide) */
+.trail-track-right {
+  animation: marquee-scroll-right 55s linear infinite;
+}
+
+@keyframes marquee-scroll-left {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes marquee-scroll-right {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+/* Group containing 4 copies of the phrase */
+.trail-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.trail-group span {
+  font-family: 'Funnel Display', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: clamp(34px, 4.167vw, 80px);
+  line-height: 1;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  display: inline-block;
+  user-select: none;
+  padding-right: 0.15em;
+}
+
+/* Bright text (#E0ECD9) with Monotone Noise (size 0.5, density 64%, color #0000008A) */
+.trail-text-bright span {
+  color: #E0ECD9;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cfilter id='tn-bright'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.25' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.64 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23tn-bright)' opacity='0.54'/%3E%3C/svg%3E"),
+    linear-gradient(#E0ECD9, #E0ECD9);
+  background-repeat: repeat, no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Dim text (#E0ECD957 ~ rgba(224, 236, 217, 0.34)) with Monotone Noise */
+.trail-text-dim span {
+  color: rgba(224, 236, 217, 0.34);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cfilter id='tn-dim'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.25' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.64 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23tn-dim)' opacity='0.54'/%3E%3C/svg%3E"),
+    linear-gradient(rgba(224, 236, 217, 0.34), rgba(224, 236, 217, 0.34));
+  background-repeat: repeat, no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Section Monotone Noise Texture Overlay */
+.trail-noise-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='tn-sec'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.64 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23tn-sec)' opacity='0.45'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  z-index: 3;
+}
+
+/* Horizontal scanlines grid overlay across the entire section (above videos and images) */
+.trail-scanlines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(to bottom,
+      transparent 0px,
+      transparent 11px,
+      rgba(224, 236, 217, 0.16) 11px,
+      rgba(224, 236, 217, 0.16) 12px);
+  z-index: 10;
+}
+
+/* Grid Dividing Lines between the 4 boxes */
+.trail-divider-vertical {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background-color: rgba(224, 236, 217, 0.22);
+  pointer-events: none;
+  z-index: 12;
+  transform: translateX(-50%);
+}
+
+.trail-divider-horizontal {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 1px;
+  background-color: rgba(224, 236, 217, 0.22);
+  pointer-events: none;
+  z-index: 12;
+  transform: translateY(-50%);
+}
+
+/* 2x2 Grid Layout for the 4 Boxes (each 960px x 400px at 1920px container) */
+.trail-grid-layout {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  z-index: 5;
+  pointer-events: none;
+  border-top: 1px solid rgba(224, 236, 217, 0.22);
+  border-bottom: 1px solid rgba(224, 236, 217, 0.22);
+}
+
+.trail-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Box 1 (Top-Left): 960x400, background #910BF8 with Duotone Noise & DitherVideo */
+.trail-box-1 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #910BF8;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.trail-box-1-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #910BF8;
+  z-index: 1;
+}
+
+/* Duotone Noise overlay: size 1, density 54%, colors #000000 and #E0ECD940 */
+.trail-box-1-noise {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.trail-box-1-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='tb1-nb'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.2 -0.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23tb1-nb)' opacity='0.37'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+.trail-box-1-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='tb1-nw'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.878  0 0 0 0 0.925  0 0 0 0 0.851  0 0 0 1.4 -0.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23tb1-nw)' opacity='0.34'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+.trail-box-1-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
+/* Center Concentric Rotating Badge in Box 1: blends with the video and background */
+.trail-badge-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(160px, 13.07vw, 251px);
+  height: clamp(160px, 13.07vw, 251px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  user-select: none;
+  z-index: 6;
+  mix-blend-mode: difference;
+}
+
+/* Big Circle: 251x252, Clockwise rotation */
+.trail-circle-big {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  transform-origin: center center;
+  animation: rotateBadgeClockwise 24s linear infinite;
+}
+
+/* Small Circle: 234x234, Anticlockwise rotation */
+.trail-circle-small {
+  position: absolute;
+  width: clamp(149px, 12.18vw, 234px);
+  height: clamp(149px, 12.18vw, 234px);
+  display: block;
+  object-fit: contain;
+  transform-origin: center center;
+  animation: rotateBadgeAnticlockwise 18s linear infinite;
+}
+
+@keyframes rotateBadgeClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateBadgeAnticlockwise {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+/* Box 2 (Top-Right): Transparent background with 3D Pink Flower */
+.trail-box-2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.trail-box-2-img {
+  position: absolute;
+  top: clamp(28px, 2.865vw, 55.02px);
+  left: clamp(150px, 15.686vw, 301.17px);
+  width: clamp(165px, 16.914vw, 324.75px);
+  height: clamp(124px, 12.708vw, 244px);
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  z-index: 6;
+}
+
+/* Box 3 (Bottom-Left): Transparent background with Teal Bird on Branch */
+.trail-box-3 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.trail-box-3-img {
+  position: absolute;
+  top: clamp(14px, 1.393vw, 26.75px);
+  left: 0;
+  width: clamp(200px, 20.896vw, 401.21px);
+  height: clamp(173px, 18.046vw, 346.48px);
+  display: block;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+  z-index: 6;
+}
+
+/* Box 4 (Bottom-Right): 960x400, background #003858 with Duotone Noise & DitherVideo */
+.trail-box-4 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #003858;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.trail-box-4-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #003858;
+  z-index: 1;
+}
+
+/* Duotone Noise overlay: size 1, density 54%, colors #000000 and #E0ECD940 */
+.trail-box-4-noise {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.trail-box-4-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='tb4-nb'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.2 -0.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23tb4-nb)' opacity='0.37'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+.trail-box-4-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='tb4-nw'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.878  0 0 0 0 0.925  0 0 0 0 0.851  0 0 0 1.4 -0.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23tb4-nw)' opacity='0.34'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+.trail-box-4-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
+/* Box 4 Bottom-Left Justified Monospace Caption */
+.trail-box-4-caption {
+  position: absolute;
+  left: clamp(8px, 0.678vw, 13.02px);
+  bottom: clamp(10px, 0.948vw, 18.21px);
+  width: clamp(140px, 9.51vw, 182.61px);
+  max-width: 182.61px;
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 300;
+  font-style: normal;
+  font-size: clamp(8.5px, 0.625vw, 12px);
+  line-height: 1.1;
+  letter-spacing: 0%;
+  text-align: justify;
+  text-justify: inter-word;
+  text-transform: uppercase;
+  color: #E0ECD9;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: 15;
+}
+
+/* Mobile responsive fallback */
+@media (max-width: 768px) {
+
+  .trail-track-left,
+  .trail-track-right {
+    animation-duration: 40s;
+  }
+}

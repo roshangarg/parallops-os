@@ -1,0 +1,308 @@
+.features-section {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-frame, #000000);
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.features-container {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  /* gap: clamp(6px, 0.572vw, 11px); */
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Left Column:
+   - Width: 751px (39.11vw at 1920px)
+   - Height: 1042px (54.27vw at 1920px)
+   - Takes complete width from edge to edge with no left/right padding
+*/
+.features-left-col {
+  position: relative;
+  width: clamp(280px, 39.115vw, 751px);
+  min-height: clamp(520px, 54.27vw, 1042px);
+  height: clamp(520px, 54.27vw, 1042px);
+  background-color: #000000;
+  box-sizing: border-box;
+  overflow: hidden;
+  flex-shrink: 0;
+  padding: 0;
+  margin: 0;
+}
+
+/* Horizontal scanlines on the left column */
+.features-left-grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(to bottom,
+      transparent 0px,
+      transparent 11px,
+      rgba(224, 236, 217, 0.15) 11px,
+      rgba(224, 236, 217, 0.15) 12px);
+  z-index: 2;
+}
+
+/* Horizontal scanlines strictly inside that inner box */
+.features-inner-grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(to bottom,
+      transparent 0px,
+      transparent 11px,
+      rgba(224, 236, 217, 0.15) 11px,
+      rgba(224, 236, 217, 0.15) 12px);
+  z-index: 2;
+}
+
+/* 9 vertical columns grid taking complete width with exact equal gaps */
+.features-v-track {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  padding: 0;
+  margin: 0;
+  z-index: 1;
+}
+
+.features-v-col {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.features-v-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: clamp(520px, 54.27vw, 1042px);
+  font-family: var(--font-display);
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: 0;
+  text-align: center;
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Built for businesses:
+   - Font: Funnel Display, 800 ExtraBold
+   - Font size: 89.47px
+   - Angle: -90deg (reads upwards from bottom to top)
+   - Monotone noise: size 0.28, density 64%, color #0000008A
+   - Color: #E0ECD9
+*/
+.features-v-text-built {
+  font-size: clamp(44px, 4.66vw, 89.47px);
+  color: #E0ECD9;
+  transform: translate(calc(-50% - clamp(3px, 0.08vw, 8.5px)), -50%) rotate(-90deg);
+
+  /* Monotone noise effect (size 0.28, density 64%, color #0000008A) applied exclusively to glyphs */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cfilter id='fmn-b28'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.14' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.64 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fmn-b28)' opacity='0.541'/%3E%3C/svg%3E"),
+    linear-gradient(#E0ECD9, #E0ECD9);
+  background-repeat: repeat, no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Not just computers:
+   - Font: Funnel Display, 800 ExtraBold
+   - Font size: 91.8px
+   - Angle: 90deg (reads downwards from top to bottom)
+   - Monotone noise: size 0.28, density 64%, color #0000008A
+   - Color: #E0ECD957
+*/
+.features-v-text-computers {
+  font-size: clamp(45px, 4.78vw, 91.8px);
+  color: #E0ECD957;
+  transform: translate(calc(-50% + clamp(3px, 0.08vw, 8.5px)), -50%) rotate(90deg);
+
+  /* Monotone noise effect (size 0.28, density 64%, color #0000008A) applied exclusively to glyphs */
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cfilter id='fmn-c28'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.14' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.64 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fmn-c28)' opacity='0.541'/%3E%3C/svg%3E"),
+    linear-gradient(rgba(224, 236, 217, 0.34), rgba(224, 236, 217, 0.34));
+  background-repeat: repeat, no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Right Column:
+   - Width: 1148px (59.79vw at 1920px)
+   - Height: 1042px (54.27vw at 1920px)
+   - Left: 771.93px (handled by container layout: 9.94 + 751 + 10.99 = 771.93px)
+   - Background: #0B3414
+   - Duotone noise: size 1, density 54%, #000000 & #E0ECD940
+*/
+.features-right-col {
+  position: relative;
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  min-height: clamp(520px, 54.27vw, 1042px);
+  height: clamp(520px, 54.27vw, 1042px);
+  background-color: #0B3414;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+/* Floating Graphic Image:
+   - Dimensions: width 806.72px, height 1433.80px
+   - Bottom: 0 (aligns with bottom edge of FeaturesSection)
+   - Top: extends up by 391.81px into ProblemSection
+   - Right: aligned to right edge (clamp(-10px, -0.5vw, 0px))
+   - mix-blend-mode: color-dodge
+*/
+.features-graphic-img {
+  position: absolute;
+  bottom: 0;
+  right: clamp(-10px, -0.5vw, 0px);
+  width: clamp(400px, 42.02vw, 806.72px);
+  height: clamp(700px, 74.68vw, 1433.8px);
+  object-fit: fill;
+  mix-blend-mode: color-dodge;
+  opacity: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: 2;
+}
+
+/* Duotone Noise Overlay strictly inside that inner box only */
+.features-inner-noise {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: hidden;
+}
+
+/* Dark noise (#000000, 54% density, size 1) */
+.features-inner-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='fnb-feat'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.2 -0.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fnb-feat)' opacity='0.37'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+/* Light duotone noise (#E0ECD9, ~40% opacity, size 1) */
+.features-inner-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='fnw-feat'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.878  0 0 0 0 0.925  0 0 0 0 0.851  0 0 0 1.4 -0.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fnw-feat)' opacity='0.40'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+/* Continuous Perimeter Snake Ticker Canvas */
+.features-snake-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  user-select: none;
+  z-index: 4;
+}
+
+/* Inner Content Box with border: 1px solid #E0ECD9 */
+.features-inner-box {
+  position: absolute;
+  top: clamp(38px, 2.92vw, 56px);
+  bottom: clamp(38px, 2.92vw, 56px);
+  left: clamp(38px, 2.92vw, 56px);
+  right: clamp(38px, 2.92vw, 56px);
+  border: 1px solid #E0ECD9;
+  box-sizing: border-box;
+  z-index: 3;
+  pointer-events: auto;
+  overflow: hidden;
+}
+
+/* 4 Feature Items Stacked on the Left inside framed box
+   - Gap from top: 34px
+   - Gap from left: 30px
+   - Card width: 330.92px
+   - Card height: 93px
+*/
+.features-inner-content {
+  position: relative;
+  z-index: 5;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(20px, 1.77vw, 34px) 0 clamp(20px, 1.77vw, 34px) clamp(18px, 1.56vw, 30px);
+  box-sizing: border-box;
+  pointer-events: auto;
+}
+
+.features-item {
+  width: clamp(240px, 17.235vw, 330.92px);
+  min-height: clamp(68px, 4.84vw, 93px);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: clamp(6px, 0.42vw, 8px);
+}
+
+/* Title:
+   - Font: Funnel Display, 800 ExtraBold
+   - Font size: 24px
+   - Line height: 100%
+   - Letter spacing: 0%
+   - Text transform: uppercase
+   - Color: #E0ECD9
+*/
+.features-item-title {
+  margin: 0;
+  font-family: var(--font-display, "Funnel Display", sans-serif);
+  font-weight: 800;
+  font-size: clamp(16px, 1.25vw, 24px);
+  line-height: 1;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: #E0ECD9;
+}
+
+/* Description:
+   - Font: Azeret Mono, 300 Light
+   - Font size: 12px
+   - Line height: 100% / 1.25 for multi-line mono wrap
+   - Letter spacing: 0%
+   - Text transform: uppercase
+   - Color: #E0ECD9
+*/
+.features-item-desc {
+  margin: 0;
+  font-family: var(--font-mono, "Azeret Mono", monospace);
+  font-weight: 300;
+  font-size: clamp(9.5px, 0.625vw, 12px);
+  line-height: 1.25;
+  letter-spacing: 0;
+  text-transform: uppercase;
+  color: #E0ECD9;
+}

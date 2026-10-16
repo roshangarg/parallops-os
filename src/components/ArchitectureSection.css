@@ -1,0 +1,285 @@
+.architecture-section {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #24004B;
+  box-sizing: border-box;
+}
+
+.architecture-main {
+  position: relative;
+  width: 100%;
+  min-height: clamp(320px, 23.75vw, 456px);
+  height: clamp(320px, 23.75vw, 456px);
+  background-color: #24004B;
+  opacity: 1;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Bottom bar: color #11007C, height matching Hero bottom bar, adds extra height below without compressing component */
+.architecture-bottom-bar {
+  position: relative;
+  width: 100%;
+  height: clamp(26px, 1.77vw, 34px);
+  background: #11007C;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Dark duotone noise specks (#000000) */
+.architecture-bottom-bar::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='ab-nb'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.2 -0.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23ab-nb)' opacity='0.37'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+/* Light duotone noise specks (#E0ECD9) */
+.architecture-bottom-bar::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='ab-nw'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.878  0 0 0 0 0.925  0 0 0 0 0.851  0 0 0 1.4 -0.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23ab-nw)' opacity='0.34'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+/* Duotone Noise Overlay: Size 1, Density 54%, Colors #000000 & #E0ECD940 */
+.architecture-noise {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Dark duotone noise grain (#000000, 54% density, size 1) */
+.architecture-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='anb'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.2 -0.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23anb)' opacity='0.37'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+/* Light duotone noise grain (#E0ECD9, ~40% opacity, size 1) */
+.architecture-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='anw'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.878  0 0 0 0 0.925  0 0 0 0 0.851  0 0 0 1.4 -0.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23anw)' opacity='0.40'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+/* Horizontal scanlines grid overlay */
+.architecture-grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image: repeating-linear-gradient(to bottom,
+      transparent 0px,
+      transparent 11px,
+      rgba(224, 236, 217, 0.15) 11px,
+      rgba(224, 236, 217, 0.15) 12px);
+  z-index: 3;
+}
+
+/* Dithered Video Background: width 100%, height 100%, mix-blend-mode color-dodge */
+.architecture-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  /* mix-blend-mode: color-dodge; */
+  z-index: 2;
+}
+
+/* Watermark Text Frame: width 1920, height 554, mix-blend-mode Overlay */
+.architecture-watermark {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1920px;
+  max-width: 100%;
+  height: clamp(380px, 28.85vw, 554px);
+  overflow: hidden;
+  mix-blend-mode: overlay;
+  opacity: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: 1;
+  display: block;
+}
+
+.architecture-watermark-text {
+  width: 100%;
+  font-family: 'Funnel Display', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: clamp(48px, 4.167vw, 80px);
+  line-height: 120.8%;
+  letter-spacing: 0%;
+  text-align: justify;
+  text-align-last: justify;
+  text-transform: uppercase;
+  color: #626d5b;
+  /* opacity: 0.8; */
+  margin-top: -10px;
+  padding: 0;
+  box-sizing: border-box;
+  word-break: break-word;
+  position: relative;
+  /* Monotone Noise on the Text: size 0.5, density 64%, color #0000008A */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cfilter id='twn'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='3.2' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.541 -0.05'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23twn)' opacity='0.64'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-clip: text;
+  -webkit-background-clip: text;
+}
+
+/* Top-Left Header Spec Text: width 344, height 36, top 32, left 32, #E0ECD9 */
+.architecture-header-text {
+  position: absolute;
+  top: 32px;
+  left: 32px;
+  width: 344px;
+  max-width: calc(100% - 64px);
+  font-family: 'Azeret Mono', monospace;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 12px;
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: justify;
+  /* text-align-last: justify; */
+  text-transform: uppercase;
+  color: #E0ECD9;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  user-select: none;
+  z-index: 5;
+}
+
+/* Center Concentric Badge Wrapper */
+.architecture-badge-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: clamp(160px, 11.69vw, 224.56px);
+  height: clamp(160px, 11.69vw, 224.56px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  user-select: none;
+  z-index: 5;
+}
+
+/* Large Circle: width 224.56, height 224.56, Clockwise rotation */
+.architecture-circle-large {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  transform-origin: center center;
+  animation: rotateClockwise 24s linear infinite;
+}
+
+/* Small Circle: adjusted to 195px to maintain a balanced, readable gap between the rings */
+.architecture-circle-small {
+  position: absolute;
+  width: clamp(140px, 10.15vw, 195px);
+  height: clamp(140px, 10.15vw, 195px);
+  display: block;
+  object-fit: contain;
+  transform-origin: center center;
+  animation: rotateAnticlockwise 18s linear infinite;
+}
+
+@keyframes rotateClockwise {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateAnticlockwise {
+  from {
+    transform: rotate(-54deg);
+  }
+
+  to {
+    transform: rotate(-414deg);
+  }
+}
+
+/* "NOT BOLTED ON" Text: Funnel Display ExtraBold 32.91px #FFFF28 */
+.architecture-bolted-text {
+  position: absolute;
+  top: 50%;
+  width: 263px;
+  font-family: 'Funnel Display', sans-serif;
+  font-weight: 800;
+  font-style: normal;
+  font-size: clamp(22px, 1.714vw, 32.91px);
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-transform: uppercase;
+  color: #FFFF28;
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  z-index: 5;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+}
+
+.architecture-bolted-left {
+  right: calc(50% + clamp(120px, 9.46vw, 181.6px));
+  transform: translateY(-50%);
+  justify-content: flex-end;
+}
+
+.architecture-bolted-right {
+  left: calc(50% + clamp(120px, 9.46vw, 181.6px));
+  transform: translateY(-50%);
+  justify-content: flex-start;
+}
+
+@media (max-width: 900px) {
+  .architecture-bolted-text {
+    font-size: 18px;
+    width: auto;
+  }
+
+  .architecture-header-text {
+    top: 16px;
+    left: 16px;
+    width: 280px;
+    font-size: 10px;
+  }
+}

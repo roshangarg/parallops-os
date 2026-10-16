@@ -1,0 +1,297 @@
+/* ==========================================================================
+   Footer Styles
+   ========================================================================== */
+
+:root {
+  /* Dynamic scalable footer height: exactly 600px at 1920px (31.25vw), expands on Ctrl - / ultrawide */
+  --footer-height: clamp(520px, 31.25vw, 1800px);
+}
+
+/* Outer container creating the document flow height for the reveal curtain effect */
+.footer-reveal-container {
+  position: relative;
+  width: 100%;
+  height: var(--footer-height);
+  background-color: transparent;
+  pointer-events: none;
+}
+
+/* Fixed footer pinned to bottom underneath main page content */
+.footer-fixed {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--footer-height);
+  background-color: #131313;
+  z-index: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  box-sizing: border-box;
+  pointer-events: auto;
+}
+
+/* Duotone Noise overlay: size 1, density 54%, colors #000000 and #E0ECD940 */
+.footer-noise {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.footer-noise::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='fn-nb'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1.2 -0.4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fn-nb)' opacity='0.37'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+.footer-noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='fn-nw'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.878  0 0 0 0 0.925  0 0 0 0 0.851  0 0 0 1.4 -0.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fn-nw)' opacity='0.34'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Top Header Bar
+   ========================================================================== */
+
+.footer-top-bar {
+  position: absolute;
+  top: clamp(24px, 1.67vw, 48px);
+  left: 0;
+  right: 0;
+  padding: 0 clamp(24px, 1.67vw, 64px);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  z-index: 10;
+  box-sizing: border-box;
+}
+
+/* Common Link Container Styles */
+.footer-link {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-decoration: none;
+  color: #ffffff;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.footer-link:hover {
+  opacity: 0.8;
+}
+
+.footer-left-link {
+  align-items: flex-start;
+  text-align: left;
+}
+
+.footer-right-link {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.footer-link-line-1 {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.footer-link-line-2 {
+  display: block;
+}
+
+/* Typography styles: Funnel Display, scales smoothly with viewport/zoom */
+.footer-text-light {
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-style: normal;
+  font-size: clamp(11px, 0.625vw, 15px);
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #ffffff;
+}
+
+.footer-text-bold {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-style: normal;
+  font-size: clamp(11px, 0.625vw, 15px);
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #ffffff;
+}
+
+/* Center: system@parallops.com button */
+.footer-email-btn {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: none;
+  border: none;
+  outline: none;
+  padding: 2px 8px;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-style: normal;
+  font-size: clamp(14px, 0.833vw, 19px);
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #ffffff;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: opacity 0.2s ease, transform 0.15s ease, background-color 0.2s ease;
+}
+
+.footer-email-btn:hover {
+  opacity: 0.85;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+.footer-email-btn:active {
+  transform: translateX(-50%) scale(0.97);
+}
+
+/* ==========================================================================
+   Copyright notice: scales in lockstep with the SVG graphics
+   ========================================================================== */
+
+.footer-copyright {
+  position: absolute;
+  top: clamp(260px, 20.75vw, 1200px);
+  right: clamp(24px, 1.67vw, 64px);
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-style: normal;
+  font-size: clamp(11px, 0.625vw, 15px);
+  line-height: 100%;
+  letter-spacing: 0%;
+  text-align: right;
+  color: #ffffff;
+  z-index: 10;
+  user-select: none;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Bottom Graphic: Expands edge-to-edge on Ctrl - / ultrawide displays
+   ========================================================================== */
+
+.footer-graphic {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: none;
+  height: auto;
+  max-height: calc(var(--footer-height) * 0.88);
+  object-fit: contain;
+  object-position: bottom center;
+  pointer-events: none;
+  user-select: none;
+  z-index: 3;
+}
+
+/* ==========================================================================
+   Toast Notification at top of viewport
+   ========================================================================== */
+
+.footer-toast {
+  position: fixed;
+  top: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2147483647;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 22px;
+  background: #181818;
+  border: 1px solid rgba(206, 255, 44, 0.6);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.9), 0 0 25px rgba(206, 255, 44, 0.25);
+  border-radius: 999px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  pointer-events: auto;
+  user-select: none;
+  animation: footerToastEnter 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.footer-toast-icon {
+  flex-shrink: 0;
+}
+
+.footer-toast-text {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 500;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+}
+
+@keyframes footerToastEnter {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* ==========================================================================
+   Responsive Breakpoints for Mobile
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .footer-reveal-container,
+  .footer-fixed {
+    height: 480px;
+  }
+
+  .footer-top-bar {
+    top: 20px;
+    padding: 0 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .footer-email-btn {
+    position: static;
+    transform: none;
+    order: 3;
+    width: 100%;
+    text-align: center;
+    margin-top: 8px;
+  }
+
+  .footer-email-btn:active {
+    transform: scale(0.97);
+  }
+
+  .footer-graphic {
+    max-height: 380px;
+  }
+
+  .footer-copyright {
+    top: auto;
+    bottom: 16px;
+    right: 16px;
+  }
+}
