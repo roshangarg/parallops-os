@@ -54,11 +54,15 @@ export default function ArchitectureSection() {
           <img
             src={largeCircleSvg}
             alt=""
+            loading="lazy"
+            decoding="async"
             className="architecture-circle-large"
           />
           <img
             src={smallCircleSvg}
             alt=""
+            loading="lazy"
+            decoding="async"
             className="architecture-circle-small"
           />
         </div>

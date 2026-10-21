@@ -1,14 +1,14 @@
 .hero-section {
   position: relative;
   width: 100%;
-  /* Height scaled to encompass left image with extra breathing room */
-  min-height: clamp(1000px, 82vw, 1500px);
+  /* Height scaled to encompass left image with extra breathing room - fluidly scales on tablet */
+  min-height: clamp(600px, 82vw, 1500px);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  /* Padding from top around 350px as requested */
-  padding-top: clamp(240px, 18.2vw, 350px);
+  /* Padding from top proportional across desktop and tablet */
+  padding-top: clamp(120px, 18.2vw, 350px);
   overflow: visible;
   /* Allows right image to flow down into next section without trapping stacking context */
 }
@@ -52,12 +52,12 @@
 
 /* Left Hero Image:
    - Anchored to the top-left (left: 0, top: 0)
-   - Completely visible without getting cut off
+   - Completely visible without getting cut off, fluidly scales on tablet
 */
 .hero-img-left {
   top: 0;
   left: 0;
-  width: clamp(520px, 72vw, 1400px);
+  width: clamp(340px, 72vw, 1400px);
   z-index: 2;
 }
 
@@ -69,15 +69,15 @@
 .hero-img-right {
   top: 0;
   right: 0;
-  width: clamp(580px, 68vw, 1600px);
+  width: clamp(360px, 68vw, 1600px);
   z-index: 2;
 }
 
 /* Bottom Divider Bar:
    - Width: 100% (1920px)
-   - Height: 34px (responsive clamp)
+   - Height: 34px (responsive clamp, fluidly scales on tablet)
    - Exact Background Color: #390947
-   - Duotone noise: size 1, density 54%, colors: #000000 & #E0ECD9 (25% opacity)
+   - Duotone noise: size 1, density 54%, colors: #000000 & #F5FAF0 (25% opacity)
    - z-index: 1 (less than right image at z-index: 2 so right image floats over it)
 */
 .hero-bottom-bar {
@@ -85,7 +85,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: clamp(26px, 1.77vw, 34px);
+  height: clamp(18px, 1.77vw, 34px);
   background: #390947;
   /* background-color: red; */
   z-index: 1;
@@ -103,7 +103,7 @@
   pointer-events: none;
 }
 
-/* Light duotone noise specks (#E0ECD9, gentle grain preserving #390947 base) */
+/* Light duotone noise specks (#F5FAF0, gentle grain preserving #390947 base) */
 .hero-bottom-bar::after {
   content: '';
   position: absolute;
@@ -136,7 +136,7 @@
   display: flex;
   flex-direction: column;
   align-items: stretch;
-  gap: clamp(12px, 0.8vw, 16px);
+  gap: clamp(8px, 0.8vw, 16px);
   mix-blend-mode: difference;
   z-index: 10;
   padding: 0;
@@ -146,6 +146,7 @@
 .hero-title-noise {
   position: absolute;
   inset: 0;
+  opacity: .50;
   pointer-events: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'%3E%3Cfilter id='tn'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.25' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.65 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23tn)' opacity='0.74'/%3E%3C/svg%3E");
   background-repeat: repeat;
@@ -162,7 +163,7 @@
 
 /* PURPOSE BUILT text:
    - Funnel Display 300 Light
-   - Color: #E0ECD9
+   - Color: #F5FAF0
 */
 .hero-corner-text {
   font-family: var(--font-display);
@@ -171,7 +172,7 @@
   line-height: 1;
   letter-spacing: 0;
   text-transform: uppercase;
-  color: #E0ECD9;
+  color: #F5FAF0;
   mix-blend-mode: difference;
   user-select: none;
   white-space: nowrap;
@@ -189,7 +190,7 @@
 
 /* OPERATING:
    - Funnel Display 800 ExtraBold
-   - Color: #E0ECD9 with mix-blend-mode: difference
+   - Color: #F5FAF0 with mix-blend-mode: difference
 */
 .hero-title-operating {
   font-family: var(--font-display);
@@ -198,7 +199,7 @@
   line-height: 0.84;
   letter-spacing: 0.005em;
   text-transform: uppercase;
-  color: #E0ECD9;
+  color: #F5FAF0;
   mix-blend-mode: difference;
   white-space: nowrap;
   margin: 0;
@@ -207,7 +208,7 @@
 
 /* SYSTEMS:
    - Funnel Display 800 ExtraBold
-   - Color: #E0ECD9 with mix-blend-mode: difference
+   - Color: #F5FAF0 with mix-blend-mode: difference
 */
 .hero-title-systems {
   font-family: var(--font-display);
@@ -216,9 +217,86 @@
   line-height: 0.84;
   letter-spacing: -0.005em;
   text-transform: uppercase;
-  color: #E0ECD9;
+  color: #F5FAF0;
   mix-blend-mode: difference;
   white-space: nowrap;
   margin: 0;
   display: block;
+}
+
+/* ==========================================================================
+   Tablet Screen Responsiveness (Landscape & Portrait Tablets: 1024px & 768px)
+   Maintains the identical layout, overlapping images, and corner alignments
+   while proportionally scaling down sizes.
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .hero-section {
+    min-height: clamp(620px, 82vw, 860px);
+    padding-top: clamp(130px, 18.2vw, 200px);
+  }
+
+  .hero-img-left {
+    width: clamp(360px, 72vw, 750px);
+  }
+
+  .hero-img-right {
+    width: clamp(380px, 68vw, 720px);
+  }
+
+  .hero-bottom-bar {
+    height: clamp(20px, 1.77vw, 28px);
+  }
+
+  .hero-title-box {
+    max-width: 92vw;
+    gap: clamp(8px, 1vw, 14px);
+  }
+
+  .hero-corner-text {
+    font-size: clamp(13px, 2.3vw, 26px);
+  }
+
+  .hero-title-operating {
+    font-size: clamp(48px, 10.42vw, 110px);
+  }
+
+  .hero-title-systems {
+    font-size: clamp(58px, 12.98vw, 138px);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: clamp(520px, 82vw, 650px);
+    padding-top: clamp(110px, 18vw, 145px);
+  }
+
+  .hero-img-left {
+    width: clamp(300px, 72vw, 560px);
+  }
+
+  .hero-img-right {
+    width: clamp(320px, 68vw, 530px);
+  }
+
+  .hero-bottom-bar {
+    height: clamp(16px, 1.77vw, 22px);
+  }
+
+  .hero-title-box {
+    max-width: 92vw;
+    gap: clamp(6px, 1vw, 10px);
+  }
+
+  .hero-corner-text {
+    font-size: clamp(11px, 2.3vw, 18px);
+  }
+
+  .hero-title-operating {
+    font-size: clamp(38px, 10.42vw, 82px);
+  }
+
+  .hero-title-systems {
+    font-size: clamp(46px, 12.98vw, 102px);
+  }
 }

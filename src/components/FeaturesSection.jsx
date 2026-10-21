@@ -319,6 +319,8 @@ export default function FeaturesSection() {
           <img
             src={featureImg}
             alt=""
+            loading="lazy"
+            decoding="async"
             className="features-graphic-img"
             aria-hidden="true"
           />

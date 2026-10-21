@@ -112,6 +112,7 @@
   max-width: 100%;
   display: block;
   overflow: visible;
+  /* opacity: .; */
 
   /* Monotone noise effect (size 0.5, density 64%, color #0000008A) applied exclusively to the text glyphs */
   background-image:
@@ -223,6 +224,12 @@
   pointer-events: auto;
 }
 
+@media (max-width: 1024px) {
+  .problem-banner-text-wrap {
+    left: 40.25%;
+  }
+}
+
 .problem-banner-text {
   font-family: var(--font-display);
   font-weight: 800;
@@ -269,16 +276,16 @@
   max-width: 100%;
   display: block;
   overflow: visible;
-
+  /* opacity: 1; */
   /* Monotone noise effect (size 0.5, density 64%, color #0000008A) applied exclusively to the #E0ECD9 text glyphs */
   background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cfilter id='pmn'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.25' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.64 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23pmn)' opacity='0.54'/%3E%3C/svg%3E"),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cfilter id='pmn'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.25' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.44 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23pmn)' opacity='0.54'/%3E%3C/svg%3E"),
     linear-gradient(#E0ECD9, #E0ECD9);
   background-repeat: repeat, no-repeat;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  color: #E0ECD9;
+  color: #F5FAF0;
 }
 
 /* Line 1: Hardware Abstract - exact Figma 161.71px */

@@ -62,9 +62,9 @@
   pointer-events: none;
   user-select: none;
   overflow: visible;
-  color: #E0ECD9;
-  background-color: #E0ECD9;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='sd-txt-noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.2' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.54 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23sd-txt-noise)'/%3E%3C/svg%3E");
+  color: #F5FAF0;
+  background-color: #F5FAF0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='sd-txt-noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.2' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.44 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23sd-txt-noise)'/%3E%3C/svg%3E");
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -103,14 +103,16 @@
    - Height: 844px (43.96vw at 1920px)
    - Top: 102.02px (5320.46px - 5218.44px)
    - Left: 249.6px (13vw at 1920px)
+   - Natural aspect-ratio preserves shape across all desktop and tablet screen sizes
 */
 .see-deeper-leaf-img {
   position: absolute;
-  top: clamp(50px, 5.3135vw, 102.02px);
-  left: clamp(120px, 13vw, 249.6px);
-  width: clamp(750px, 85.23vw, 1636.4px);
-  height: clamp(380px, 43.96vw, 844px);
-  object-fit: fill;
+  top: clamp(40px, 5.3135vw, 102.02px);
+  left: clamp(60px, 13vw, 249.6px);
+  width: clamp(420px, 85.23vw, 1636.4px);
+  height: auto;
+  aspect-ratio: 1636.4 / 844;
+  object-fit: contain;
   opacity: 1;
   pointer-events: none;
   user-select: none;
@@ -469,6 +471,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
@@ -478,7 +481,150 @@
   from {
     transform: rotate(-54deg);
   }
+
   to {
     transform: rotate(-414deg);
+  }
+}
+
+/* ==========================================================================
+   Tablet Screen Responsiveness (Landscape & Portrait Tablets: 1024px & 768px)
+   Maintains dual-column layout, leaf image weave, and video aspect ratios
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .see-deeper-title-line {
+    font-size: clamp(48px, 9.117vw, 94px);
+  }
+
+  .see-deeper-title-line-1 {
+    top: clamp(10px, 1.2vw, 16px);
+  }
+
+  .see-deeper-title-line-2 {
+    top: clamp(56px, 8.66vw, 88px);
+  }
+
+  .see-deeper-title-line-3 {
+    top: clamp(102px, 16.44vw, 168px);
+  }
+
+  .see-deeper-title-line-4 {
+    top: clamp(148px, 24.22vw, 248px);
+  }
+
+  .see-deeper-leaf-img {
+    top: clamp(35px, 6.81vw, 90px);
+    left: clamp(60px, 13vw, 115px);
+    width: clamp(520px, 82vw, 840px);
+  }
+
+  .see-deeper-left-top {
+    min-height: clamp(260px, 31.25vw, 320px);
+    height: clamp(260px, 31.25vw, 320px);
+  }
+
+  .see-deeper-left-bottom {
+    min-height: clamp(390px, 46.875vw, 480px);
+    height: clamp(390px, 46.875vw, 480px);
+  }
+
+  .see-deeper-right-top {
+    min-height: clamp(410px, 49.27vw, 504px);
+    height: clamp(410px, 49.27vw, 504px);
+  }
+
+  .see-deeper-right-spec-text {
+    top: auto;
+    bottom: clamp(16px, 2.5vw, 28px);
+    left: clamp(16px, 2.5vw, 24px);
+    width: clamp(220px, 85%, 320px);
+  }
+
+  .see-deeper-right-bottom {
+    min-height: clamp(240px, 28.85vw, 296px);
+    height: clamp(240px, 28.85vw, 296px);
+  }
+
+  .see-deeper-ticker-wrap {
+    /* width: clamp(240px, 100%, 350px); */
+  }
+
+  .see-deeper-badge-wrapper {
+    width: clamp(160px, 18.6vw, 192px);
+    height: clamp(160px, 18.6vw, 192px);
+  }
+}
+
+@media (max-width: 768px) {
+  .see-deeper-title-line {
+    font-size: clamp(36px, 9vw, 68px);
+  }
+
+  .see-deeper-title-line-1 {
+    top: clamp(8px, 1.5vw, 12px);
+  }
+
+  .see-deeper-title-line-2 {
+    top: clamp(44px, 7.5vw, 58px);
+  }
+
+  .see-deeper-title-line-3 {
+    top: clamp(80px, 14vw, 108px);
+  }
+
+  .see-deeper-title-line-4 {
+    top: clamp(116px, 20vw, 154px);
+  }
+
+  .see-deeper-leaf-img {
+    top: clamp(25px, 4.5vw, 38px);
+    left: clamp(40px, 9vw, 70px);
+    width: clamp(420px, 82vw, 630px);
+  }
+
+  .see-deeper-left-top {
+    min-height: clamp(200px, 31.25vw, 240px);
+    height: clamp(200px, 31.25vw, 240px);
+  }
+
+  .see-deeper-left-bottom {
+    min-height: clamp(300px, 46.875vw, 360px);
+    height: clamp(300px, 46.875vw, 360px);
+  }
+
+  .see-deeper-spec-text {
+    width: clamp(200px, 85%, 280px);
+    font-size: 10px;
+  }
+
+  .see-deeper-right-top {
+    min-height: clamp(315px, 49.27vw, 378px);
+    height: clamp(315px, 49.27vw, 378px);
+  }
+
+  .see-deeper-right-spec-text {
+    top: auto;
+    bottom: clamp(14px, 2vw, 20px);
+    left: clamp(14px, 2vw, 18px);
+    width: clamp(200px, 88%, 260px);
+    font-size: 10px;
+  }
+
+  .see-deeper-right-bottom {
+    min-height: clamp(185px, 28.85vw, 222px);
+    height: clamp(185px, 28.85vw, 222px);
+  }
+
+  .see-deeper-ticker-wrap {
+    width: clamp(200px, 92%, 260px);
+  }
+
+  .see-deeper-ticker-line {
+    font-size: clamp(14px, 2.3vw, 22px);
+  }
+
+  .see-deeper-badge-wrapper {
+    width: clamp(130px, 18.6vw, 150px);
+    height: clamp(130px, 18.6vw, 150px);
   }
 }

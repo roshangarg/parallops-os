@@ -16,6 +16,8 @@ export default function Hero() {
           src={heroLeft}
           alt=""
           className="hero-img hero-img-left"
+          loading="lazy"
+          decoding="async"
           aria-hidden="true"
           onLoad={(e) => {
             const { naturalWidth, naturalHeight } = e.target
@@ -29,6 +31,8 @@ export default function Hero() {
           src={heroRight}
           alt=""
           className="hero-img hero-img-right"
+          loading="lazy"
+          decoding="async"
           aria-hidden="true"
           onLoad={(e) => {
             const { naturalWidth, naturalHeight } = e.target

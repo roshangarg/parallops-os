@@ -52,6 +52,8 @@ export default function SeeDeeperSection() {
         <img
           src={leafImg}
           alt=""
+          loading="lazy"
+          decoding="async"
           className="see-deeper-leaf-img"
           aria-hidden="true"
         />
@@ -122,6 +124,8 @@ export default function SeeDeeperSection() {
             <img
               src={rightTopImg}
               alt=""
+              loading="lazy"
+              decoding="async"
               className="see-deeper-right-top-img"
               aria-hidden="true"
             />
@@ -149,6 +153,7 @@ export default function SeeDeeperSection() {
               className="see-deeper-video"
               style="threshold"
               crop="center"
+              rotation={-90}
               size={1}
               levels={2}
               brightness={100}
@@ -170,11 +175,15 @@ export default function SeeDeeperSection() {
               <img
                 src={unseenBigSvg}
                 alt=""
+                loading="lazy"
+                decoding="async"
                 className="see-deeper-circle-big"
               />
               <img
                 src={unseenSmallSvg}
                 alt=""
+                loading="lazy"
+                decoding="async"
                 className="see-deeper-circle-small"
               />
             </div>

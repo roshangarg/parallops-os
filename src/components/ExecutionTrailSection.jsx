@@ -103,11 +103,15 @@ export default function ExecutionTrailSection() {
               <img
                 src={nothingBigSvg}
                 alt=""
+                loading="lazy"
+                decoding="async"
                 className="trail-circle-big"
               />
               <img
                 src={nothingSmallSvg}
                 alt=""
+                loading="lazy"
+                decoding="async"
                 className="trail-circle-small"
               />
             </div>
@@ -116,6 +120,8 @@ export default function ExecutionTrailSection() {
             <img
               src={executionGrid2Img}
               alt=""
+              loading="lazy"
+              decoding="async"
               className="trail-box-2-img"
             />
           </div>
@@ -123,6 +129,8 @@ export default function ExecutionTrailSection() {
             <img
               src={executionGrid3Img}
               alt=""
+              loading="lazy"
+              decoding="async"
               className="trail-box-3-img"
             />
           </div>

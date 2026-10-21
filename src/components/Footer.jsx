@@ -140,6 +140,8 @@ export default function Footer() {
         <img
           src={footerSvg}
           alt="Parallops OS"
+          loading="lazy"
+          decoding="async"
           className="footer-graphic"
         />
       </footer>

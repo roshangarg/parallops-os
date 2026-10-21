@@ -269,6 +269,18 @@
   gap: clamp(6px, 0.42vw, 8px);
 }
 
+@media (max-width: 1024px) {
+  .features-item {
+    width: clamp(240px, 34.235vw, 530.92px);
+    /* background-color: red; */
+    /* min-height: clamp(68px, 4.84vw, 93px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: clamp(6px, 0.42vw, 8px); */
+  }
+}
+
 /* Title:
    - Font: Funnel Display, 800 ExtraBold
    - Font size: 24px

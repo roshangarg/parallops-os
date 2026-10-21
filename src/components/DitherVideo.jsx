@@ -302,15 +302,10 @@ export default function DitherVideo({
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR)
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR)
 
-    // Ensure video is playing
+    // Video lazy playback management via IntersectionObserver
     video.muted = true
     video.playsInline = true
     video.loop = true
-    video.autoplay = true
-    const playPromise = video.play()
-    if (playPromise !== undefined) {
-      playPromise.catch(() => { })
-    }
 
     const rgbMono = hexToRgb(activeMonoColor)
     let styleCode = 0
@@ -323,7 +318,12 @@ export default function DitherVideo({
       styleCode = 0 // 'threshold'
     }
 
+    let isVisible = false
+    let hasLoadedSrc = false
+
     const render = () => {
+      if (!isVisible) return
+
       const rect = container.getBoundingClientRect()
       const dpr = window.devicePixelRatio || 1
       const targetW = Math.round(rect.width * dpr)
@@ -364,10 +364,55 @@ export default function DitherVideo({
       animId = requestAnimationFrame(render)
     }
 
-    animId = requestAnimationFrame(render)
+    const startPlaying = () => {
+      isVisible = true
+      if (!hasLoadedSrc) {
+        hasLoadedSrc = true
+        if (!video.src && src) {
+          video.src = src
+          video.load()
+        }
+      }
+      const playPromise = video.play()
+      if (playPromise !== undefined) {
+        playPromise.catch(() => { })
+      }
+      if (!animId) {
+        animId = requestAnimationFrame(render)
+      }
+    }
+
+    const stopPlaying = () => {
+      isVisible = false
+      video.pause()
+      if (animId) {
+        cancelAnimationFrame(animId)
+        animId = null
+      }
+    }
+
+    let observer = null
+    if (typeof window !== 'undefined' && 'IntersectionObserver' in window) {
+      observer = new IntersectionObserver(
+        (entries) => {
+          const entry = entries[0]
+          if (entry.isIntersecting) {
+            startPlaying()
+          } else {
+            stopPlaying()
+          }
+        },
+        { rootMargin: '250px 0px' }
+      )
+      observer.observe(container)
+    } else {
+      startPlaying()
+    }
 
     return () => {
-      cancelAnimationFrame(animId)
+      if (observer) observer.disconnect()
+      if (animId) cancelAnimationFrame(animId)
+      video.pause()
       gl.deleteProgram(program)
       gl.deleteShader(vs)
       gl.deleteShader(fs)
@@ -375,6 +420,7 @@ export default function DitherVideo({
       gl.deleteBuffer(positionBuffer)
     }
   }, [
+    src,
     activeStyle,
     activeSize,
     activeLevels,
@@ -399,11 +445,10 @@ export default function DitherVideo({
     >
       <video
         ref={videoRef}
-        src={src}
+        preload="none"
         className="dither-video-media"
-        autoPlay
-        loop
         muted
+        loop
         playsInline
       />
       <canvas ref={canvasRef} className="dither-video-canvas" />

@@ -327,6 +327,8 @@ export default function LifecycleSection() {
         <img
           src={lifecycleImg}
           alt=""
+          loading="lazy"
+          decoding="async"
           className="lifecycle-fg-img"
           aria-hidden="true"
         />

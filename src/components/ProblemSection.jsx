@@ -38,6 +38,8 @@ export default function ProblemSection() {
           <img
             src={problemSectionImg}
             alt=""
+            loading="lazy"
+            decoding="async"
             className="problem-banner-img"
           />
           <div className="problem-banner-text-wrap">

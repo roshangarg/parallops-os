@@ -18,6 +18,8 @@ export default function FlowerSection() {
           <img
             src={flowerLandRImg}
             alt="Left blue flower"
+            loading="lazy"
+            decoding="async"
             className="flower-side-img"
           />
         </div>
@@ -29,6 +31,8 @@ export default function FlowerSection() {
             <img
               src={flowerLargeText}
               alt="Adaptive Fabric Plane OS text ring"
+              loading="lazy"
+              decoding="async"
               className="flower-text-svg flower-text-large"
             />
           </div>
@@ -37,6 +41,8 @@ export default function FlowerSection() {
           <img
             src={largeImg}
             alt=""
+            loading="lazy"
+            decoding="async"
             className="flower-layer flower-img-large"
           />
 
@@ -45,6 +51,8 @@ export default function FlowerSection() {
             <img
               src={flowerMediumText}
               alt="Accelerators OS Core text ring"
+              loading="lazy"
+              decoding="async"
               className="flower-text-svg flower-text-medium"
             />
           </div>
@@ -53,6 +61,8 @@ export default function FlowerSection() {
           <img
             src={mediumImg}
             alt=""
+            loading="lazy"
+            decoding="async"
             className="flower-layer flower-img-medium"
           />
 
@@ -61,6 +71,8 @@ export default function FlowerSection() {
             <img
               src={flowerSmallText}
               alt="Thin Kernel OS text ring"
+              loading="lazy"
+              decoding="async"
               className="flower-text-svg flower-text-small"
             />
           </div>
@@ -69,6 +81,8 @@ export default function FlowerSection() {
           <img
             src={smallImg}
             alt=""
+            loading="lazy"
+            decoding="async"
             className="flower-layer flower-img-small"
           />
         </div>
@@ -78,6 +92,8 @@ export default function FlowerSection() {
           <img
             src={flowerLandRImg}
             alt="Right blue flower"
+            loading="lazy"
+            decoding="async"
             className="flower-side-img"
           />
         </div>
