@@ -12,9 +12,8 @@
 .lifecycle-container {
   position: relative;
   width: 100%;
-  max-width: 1920px;
-  height: clamp(500px, 46.875vw, 900px);
-  min-height: clamp(500px, 46.875vw, 900px);
+  height: clamp(500px, 46.875vw, 2250px);
+  min-height: clamp(500px, 46.875vw, 2250px);
   background-color: #CAF0A4;
   opacity: 1;
   overflow: hidden;
@@ -26,16 +25,16 @@
 /* Video: 1920x1080 at 1920px, top: -89.5px, centered vertically in 900px container */
 .lifecycle-video {
   position: absolute;
-  top: clamp(-89.5px, -4.661vw, 0px);
+  top: clamp(-200px, -4.661vw, 0px);
   left: 0;
   width: 100%;
-  height: clamp(600px, 56.25vw, 1080px);
+  height: clamp(600px, 56.25vw, 2700px);
   pointer-events: none;
   z-index: 2;
 }
 
 /* Slanted Watermark Text Overlay: "A LIFECYCLE WITHOUT THE SURPRISES"
-   - Clamped strictly inside the 1828px x 808px inner box
+   - Clamped strictly inside the inner box
    - Angle: 24deg (slanted upwards to the right at -24deg in CSS)
    - Font: Funnel Display, ExtraBold 800, 34px, Line height 100%, uppercase
    - Color: #B9E79E with Monotone noise (size 0.5, density 64%, color #0000008A)
@@ -43,10 +42,10 @@
 */
 .lifecycle-slanted-wrapper {
   position: absolute;
-  top: clamp(28px, 2.3958vw, 46px);
-  bottom: clamp(28px, 2.3958vw, 46px);
-  left: clamp(28px, 2.3958vw, 46px);
-  right: clamp(28px, 2.3958vw, 46px);
+  top: clamp(28px, 2.3958vw, 115px);
+  bottom: clamp(28px, 2.3958vw, 115px);
+  left: clamp(28px, 2.3958vw, 115px);
+  right: clamp(28px, 2.3958vw, 115px);
   overflow: hidden;
   pointer-events: none;
   z-index: 1;
@@ -63,7 +62,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: clamp(14px, 1.406vw, 27px);
+  gap: clamp(14px, 1.406vw, 68px);
 }
 
 .lifecycle-slanted-row {
@@ -71,7 +70,7 @@
   flex-direction: row;
   align-items: center;
   white-space: nowrap;
-  gap: clamp(20px, 1.979vw, 38px);
+  gap: clamp(20px, 1.979vw, 95px);
   flex-shrink: 0;
   will-change: transform;
 }
@@ -80,7 +79,7 @@
   font-family: var(--font-display, 'Funnel Display', sans-serif);
   font-weight: 800;
   font-style: normal;
-  font-size: clamp(16px, 1.7708vw, 34px);
+  font-size: clamp(16px, 1.7708vw, 85px);
   line-height: 1;
   letter-spacing: 0%;
   text-transform: uppercase;
@@ -101,10 +100,10 @@
 /* Foreground Flowers Image: 1920x754 at 1920px, top: 146.19px (anchored to bottom of 900px container) */
 .lifecycle-fg-img {
   position: absolute;
-  top: clamp(80px, 7.614vw, 146.19px);
+  top: clamp(80px, 7.614vw, 365px);
   left: 0;
   width: 100%;
-  height: clamp(400px, 39.27vw, 754px);
+  height: clamp(400px, 39.27vw, 1885px);
   object-fit: fill;
   opacity: 1;
   pointer-events: none;
@@ -127,7 +126,7 @@
   top: 0;
   left: 0;
   right: 0;
-  height: clamp(28px, 2.3958vw, 46px);
+  height: clamp(28px, 2.3958vw, 115px);
   background-color: #1D3E0B;
 }
 
@@ -136,7 +135,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: clamp(28px, 2.3958vw, 46px);
+  height: clamp(28px, 2.3958vw, 115px);
   background-color: #1D3E0B;
 }
 
@@ -145,7 +144,7 @@
   top: 0;
   bottom: 0;
   left: 0;
-  width: clamp(28px, 2.3958vw, 46px);
+  width: clamp(28px, 2.3958vw, 115px);
   background-color: #1D3E0B;
 }
 
@@ -154,17 +153,17 @@
   top: 0;
   bottom: 0;
   right: 0;
-  width: clamp(28px, 2.3958vw, 46px);
+  width: clamp(28px, 2.3958vw, 115px);
   background-color: #1D3E0B;
 }
 
 /* Framed Inner Box: width 1828px, height 808.1875px, top 46px, left 46px, border 1px solid #E0ECD9 */
 .lifecycle-inner-box {
   position: absolute;
-  top: clamp(28px, 2.3958vw, 46px);
-  bottom: clamp(28px, 2.3958vw, 46px);
-  left: clamp(28px, 2.3958vw, 46px);
-  right: clamp(28px, 2.3958vw, 46px);
+  top: clamp(28px, 2.3958vw, 115px);
+  bottom: clamp(28px, 2.3958vw, 115px);
+  left: clamp(28px, 2.3958vw, 115px);
+  right: clamp(28px, 2.3958vw, 115px);
   border: 1px solid #E0ECD9;
   box-sizing: border-box;
   pointer-events: none;
@@ -240,8 +239,8 @@
   .lifecycle-container {
     width: 100% !important;
     max-width: 100% !important;
-    min-height: 500px !important;
-    height: 500px !important;
+    min-height: calc(100vw * 500 / 390) !important;
+    height: calc(100vw * 500 / 390) !important;
     background-color: #CAF0A4 !important;
     overflow: hidden !important;
     position: relative !important;
@@ -270,19 +269,18 @@
   }
 
   /* Mobile Flowers Image (lifecycleimg.webp):
-     width: 600px, height: 235.625px, top: 264.37px (5120.63 - 4856.26), left: -105px on 390px
      centered horizontally via left: 50%; transform: translateX(-50%)
      cut from left & right sides by overflow: hidden
      z-index: 3 (above text)
   */
   .lifecycle-mobile-flowers-img {
     position: absolute;
-    top: 264.37px;
+    top: calc(100vw * 264.37 / 390);
     left: 50%;
     transform: translateX(-50%);
-    width: 600px;
+    width: calc(100vw * 600 / 390);
     max-width: none !important;
-    height: 235.625px;
+    height: calc(100vw * 235.625 / 390);
     object-fit: cover;
     opacity: 1;
     pointer-events: none;
@@ -300,16 +298,16 @@
     z-index: 2;
   }
 
-  /* Common style for 4 headline words */
+  /* Common style for 4 headline words: constant 18px side padding */
   .lifecycle-mobile-word {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 354px;
+    left: 18px;
+    width: calc(100% - 36px);
     max-width: calc(100% - 36px);
     margin: 0;
     overflow: visible;
     white-space: nowrap;
+    box-sizing: border-box;
     font-family: var(--font-display, 'Funnel Display', sans-serif);
     font-weight: 800;
     font-style: normal;
@@ -324,53 +322,53 @@
     user-select: none;
   }
 
-  /* Word 1: STAY - top: 54.58px, height increased to 125px (line-height 110px), font-size: 145.68px, noise size 0.42 (baseFrequency: 1.2), density 64% */
+  /* Word 1: STAY - fluidly scaled with 18px constant side padding */
   .lifecycle-mobile-word-stay {
-    top: 54.58px;
-    height: 125px;
-    line-height: 110px;
-    padding: 0 0 20px 0;
-    margin-bottom: -20px;
-    font-size: 145.68px;
+    top: calc(100vw * 54.58 / 390);
+    height: auto;
+    line-height: 1;
+    padding: 0 0 calc((100vw - 36px) * 6 / 354) 0;
+    margin: 0;
+    font-size: calc((100vw - 36px) * 145.68 / 354);
     background-image:
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cfilter id='lc-noise-stay'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.64 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23lc-noise-stay)' opacity='0.54'/%3E%3C/svg%3E"),
       linear-gradient(#E0ECD9, #E0ECD9);
   }
 
-  /* Word 2: SECURE - top: 184.31px, height increased to 80px (line-height 70px), font-size: 88.47px, noise size 0.25 (baseFrequency: 2.0), density 64% */
+  /* Word 2: SECURE - fluidly scaled with 18px constant side padding */
   .lifecycle-mobile-word-secure {
-    top: 184.31px;
-    height: 80px;
-    line-height: 70px;
-    padding: 0 0 15px 0;
-    margin-bottom: -15px;
-    font-size: 88.47px;
+    top: calc(100vw * 184.31 / 390);
+    height: auto;
+    line-height: 1;
+    padding: 0 0 calc((100vw - 36px) * 4 / 354) 0;
+    margin: 0;
+    font-size: calc((100vw - 36px) * 88.47 / 354);
     background-image:
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cfilter id='lc-noise-secure'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.0' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.64 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23lc-noise-secure)' opacity='0.54'/%3E%3C/svg%3E"),
       linear-gradient(#E0ECD9, #E0ECD9);
   }
 
-  /* Word 3: SUPPORTED - top: 276.03px, height increased to 54px (line-height 48px), font-size: 57.82px, noise size 0.17 (baseFrequency: 2.9), density 64% */
+  /* Word 3: SUPPORTED - fluidly scaled with 18px constant side padding */
   .lifecycle-mobile-word-supported {
-    top: 276.03px;
-    height: 54px;
-    line-height: 48px;
-    padding: 0 0 12px 0;
-    margin-bottom: -12px;
-    font-size: 57.82px;
+    top: calc(100vw * 276.03 / 390);
+    height: auto;
+    line-height: 1;
+    padding: 0 0 calc((100vw - 36px) * 4 / 354) 0;
+    margin: 0;
+    font-size: calc((100vw - 36px) * 57.82 / 354);
     background-image:
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cfilter id='lc-noise-supported'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.64 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23lc-noise-supported)' opacity='0.54'/%3E%3C/svg%3E"),
       linear-gradient(#E0ECD9, #E0ECD9);
   }
 
-  /* Word 4: CURRENT - top: 346.76px, height increased to 66px (line-height 58px), font-size: 72.43px, noise size 0.21 (baseFrequency: 2.4), density 64% */
+  /* Word 4: CURRENT - fluidly scaled with 18px constant side padding */
   .lifecycle-mobile-word-current {
-    top: 346.76px;
-    height: 66px;
-    line-height: 58px;
-    padding: 0 0 15px 0;
-    margin-bottom: -15px;
-    font-size: 72.43px;
+    top: calc(100vw * 346.76 / 390);
+    height: auto;
+    line-height: 1;
+    padding: 0 0 calc((100vw - 36px) * 4 / 354) 0;
+    margin: 0;
+    font-size: calc((100vw - 36px) * 72.43 / 354);
     background-image:
       url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cfilter id='lc-noise-current'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.4' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.64 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23lc-noise-current)' opacity='0.54'/%3E%3C/svg%3E"),
       linear-gradient(#E0ECD9, #E0ECD9);

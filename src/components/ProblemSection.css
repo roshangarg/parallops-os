@@ -358,89 +358,88 @@
     align-items: center;
   }
 
-  /* Top Section Header: width 354px, height 138px, left 18px (centered on 390px) */
+  /* Top Section Header: width 100%, height scaled proportionally with (100vw - 36px) */
   .problem-top-header {
-    width: 354px;
+    width: 100%;
     max-width: 100%;
-    height: 138px;
+    height: auto;
     padding: 0;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
     text-align: left;
-    gap: 0;
+    gap: calc((100vw - 36px) * 8 / 354);
   }
 
   .problem-line {
-    width: 354px;
+    width: 100%;
     max-width: 100%;
-    line-height: 100%;
+    height: auto;
+    line-height: 1.15;
     letter-spacing: 0;
     white-space: nowrap;
     text-align: left;
     margin: 0;
-    padding: 0;
+    padding: 0 0 4px 0;
+    overflow: visible;
+    display: block;
   }
 
-  /* Line 1: Hardware driver complexity - 21.18px, height 14px */
+  /* Line 1: Hardware driver complexity - 21.18px */
   .problem-line-1 {
-    font-size: 21.18px;
-    height: 14px;
-    display: flex;
-    align-items: center;
+    font-size: calc((100vw - 36px) * 21.18 / 354);
+    height: auto;
+    display: block;
   }
 
-  /* Line 2: Security & access fragment - 21.97px, height 15px */
+  /* Line 2: Security & access fragment - 21.97px */
   .problem-line-2 {
-    font-size: 21.97px;
-    height: 15px;
-    display: flex;
-    align-items: center;
+    font-size: calc((100vw - 36px) * 21.97 / 354);
+    height: auto;
+    display: block;
   }
 
-  /* Line 3: Stranded trouble shooting - 21.97px, height 15px */
+  /* Line 3: Stranded trouble shooting - 21.97px */
   .problem-line-3 {
-    font-size: 21.97px;
-    height: 15px;
-    display: flex;
-    align-items: center;
+    font-size: calc((100vw - 36px) * 21.97 / 354);
+    height: auto;
+    display: block;
   }
 
-  /* Line 4: One size fits all os - 33.04px, height 22px, width 353px */
+  /* Line 4: One size fits all os - 33.04px */
   .problem-line-4 {
-    font-size: 33.04px;
-    height: 22px;
-    width: 353px;
+    font-size: calc((100vw - 36px) * 33.04 / 354);
+    height: auto;
+    width: 100%;
     max-width: 100%;
-    display: flex;
-    align-items: center;
+    display: block;
   }
 
-  /* Sub Row container: width 354px, height 196px, top gap 34px (centered on 390px) */
+  /* Sub Row container: width 100%, height scaled proportionally with (100vw - 36px) */
   .problem-sub-row {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: stretch;
-    width: 354px;
+    width: 100%;
     max-width: 100%;
-    height: 196px;
+    height: calc((100vw - 36px) * 196 / 354);
     padding: 0;
-    margin: 34px auto 0;
+    margin: calc((100vw - 36px) * 34 / 354) auto 0;
     box-sizing: border-box;
   }
 
   .problem-sub-col {
     font-family: var(--font-mono);
     font-weight: 100;
-    font-size: 12px;
+    font-size: calc((100vw - 36px) * 12 / 354);
     line-height: 1.25;
     letter-spacing: 0;
     text-transform: uppercase;
     color: #E0ECD9;
-    width: 354px;
+    width: 100%;
     max-width: 100%;
     margin: 0;
     padding: 0;
@@ -449,7 +448,7 @@
 
   /* 1. Traditional operating systems... - height 50px, justified */
   .problem-sub-left {
-    height: 50px;
+    height: calc((100vw - 36px) * 50 / 354);
     text-align: justify;
     text-justify: inter-word;
     display: block;
@@ -457,7 +456,7 @@
 
   /* 2. --- This disconnect --- - height 8px, centered */
   .problem-sub-center {
-    height: 8px;
+    height: calc((100vw - 36px) * 8 / 354);
     text-align: center;
     white-space: nowrap;
     display: flex;
@@ -468,7 +467,7 @@
 
   /* 3. forces applications to consume... - height 50px, justified */
   .problem-sub-right {
-    height: 50px;
+    height: calc((100vw - 36px) * 50 / 354);
     text-align: justify;
     text-justify: inter-word;
     display: block;
@@ -521,62 +520,61 @@
     margin: 0;
   }
 
-  /* Bottom Feature Header: width 354px, height 149px, top gap 16px */
+  /* Bottom Feature Header: width 100% */
   .problem-bottom-header {
-    width: 354px;
+    width: 100%;
     max-width: 100%;
-    height: 149px;
+    height: auto;
     padding: 0;
-    margin: 16px auto 0;
+    margin: calc((100vw - 36px) * 16 / 354) auto 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
     text-align: left;
-    gap: 0;
+    gap: calc((100vw - 36px) * 8 / 354);
     box-sizing: border-box;
   }
 
   .problem-bottom-line {
-    width: 354px;
+    width: 100%;
     max-width: 100%;
-    line-height: 100%;
+    height: auto;
+    line-height: 1.15;
     letter-spacing: 0;
     white-space: nowrap;
     text-align: left;
     margin: 0;
-    padding: 0;
+    padding: 0 0 4px 0;
+    overflow: visible;
+    display: block;
   }
 
-  /* Line 1: Hardware Abstract - 30.84px, height 21px */
+  /* Line 1: Hardware Abstract - 30.84px */
   .problem-bottom-line-1 {
-    font-size: 30.84px;
-    height: 21px;
-    display: flex;
-    align-items: center;
+    font-size: calc((100vw - 36px) * 30.84 / 354);
+    height: auto;
+    display: block;
   }
 
-  /* Line 2: Policy & security fabric - 25.92px, height 17px */
+  /* Line 2: Policy & security fabric - 25.92px */
   .problem-bottom-line-2 {
-    font-size: 25.92px;
-    height: 17px;
-    display: flex;
-    align-items: center;
+    font-size: calc((100vw - 36px) * 25.92 / 354);
+    height: auto;
+    display: block;
   }
 
-  /* Line 3: Observability & telemetry - 23.59px, height 16px */
+  /* Line 3: Observability & telemetry - 23.59px */
   .problem-bottom-line-3 {
-    font-size: 23.59px;
-    height: 16px;
-    display: flex;
-    align-items: center;
+    font-size: calc((100vw - 36px) * 23.59 / 354);
+    height: auto;
+    display: block;
   }
 
-  /* Line 4: Industry profiled - 34.37px, height ~23px */
+  /* Line 4: Industry profiled - 34.37px */
   .problem-bottom-line-4 {
-    font-size: 34.37px;
-    height: 23px;
-    display: flex;
-    align-items: center;
+    font-size: calc((100vw - 36px) * 34.37 / 354);
+    height: auto;
+    display: block;
   }
 }

@@ -110,15 +110,13 @@
   z-index: 2;
 }
 
-/* Watermark Text Frame: width 1920, height 554, mix-blend-mode Overlay */
+/* Watermark Text Frame: expands full width and starts from left: 0 where the video starts */
 .architecture-watermark {
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1920px;
-  max-width: 100%;
-  height: clamp(380px, 28.85vw, 554px);
+  left: 0;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   mix-blend-mode: overlay;
   opacity: 1;
@@ -308,8 +306,8 @@
 
   .architecture-main {
     width: 100%;
-    min-height: 800px;
-    height: 800px;
+    min-height: calc(100vw * 815 / 390);
+    height: auto;
     position: relative;
     background-color: #24004B;
     overflow: hidden;
@@ -342,40 +340,40 @@
     z-index: 5;
   }
 
-  /* 1. Top Title: NOT BOLTED ON (width 354, top 30px, 44.3px #FFFF28) */
+  /* 1. Top Title: NOT BOLTED ON (fluid scaling with 18px constant side padding) */
   .architecture-mobile-top-title {
     position: absolute;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 354px;
+    top: calc(100vw * 30 / 390);
+    left: 18px;
+    width: calc(100% - 36px);
     max-width: calc(100% - 36px);
-    height: 30px;
-    line-height: 30px;
+    height: auto;
+    line-height: 1.05;
     display: block;
     text-align: left;
     font-family: var(--font-display, 'Funnel Display', sans-serif);
     font-weight: 800;
-    font-size: 44.3px;
+    font-size: calc((100vw - 36px) * 44.3 / 354);
     letter-spacing: 0;
     text-transform: uppercase;
     color: #FFFF28;
     margin: 0;
-    padding: 0;
+    padding: 0 0 2px 0;
     white-space: nowrap;
+    overflow: visible;
     box-sizing: border-box;
   }
 
-  /* 2. Description text: width 250, height 50, top 124px, 12px Azeret Mono Light #E0ECD9 */
+  /* 2. Description text: fluid scaling aligned proportionally */
   .architecture-mobile-desc {
     position: absolute;
-    top: 124px;
-    left: calc(50% - 161px);
-    width: 250px;
-    max-width: calc(100% - 68px);
+    top: calc(100vw * 124 / 390);
+    left: calc(18px + (100vw - 36px) * 16 / 354);
+    width: calc((100vw - 36px) * 250 / 354);
+    max-width: calc(100% - 36px);
     font-family: var(--font-mono, 'Azeret Mono', monospace);
     font-weight: 300;
-    font-size: 12px;
+    font-size: calc((100vw - 36px) * 12 / 354);
     line-height: 1.25;
     letter-spacing: 0;
     text-align: justify;
@@ -387,14 +385,14 @@
     box-sizing: border-box;
   }
 
-  /* 3. Center Concentric Rotating Badge: width/height 323.63px, top 238px, difference blend */
+  /* 3. Center Concentric Rotating Badge: difference blend */
   .architecture-badge-wrapper {
     position: absolute;
-    top: 238px;
+    top: calc(100vw * 238 / 390);
     left: 50%;
     transform: translateX(-50%);
-    width: 323.625px;
-    height: 323.634px;
+    width: calc(100vw * 323.625 / 390);
+    height: calc(100vw * 323.634 / 390);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -414,45 +412,45 @@
 
   .architecture-circle-small {
     position: absolute;
-    width: 281px;
-    height: 281px;
+    width: calc(100vw * 281 / 390);
+    height: calc(100vw * 281 / 390);
     object-fit: contain;
     transform-origin: center center;
     animation: rotateAnticlockwise 18s linear infinite;
   }
 
-  /* 4. Bottom Stack: 4 lines of NOT BOLTED ON (gap 14px, top 584px, width 354, 44.3px #FFFF28) */
+  /* 4. Bottom Stack: 4 lines of NOT BOLTED ON (compact original gap, fully visible) */
   .architecture-mobile-bottom-stack {
     position: absolute;
-    top: 600px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 354px;
+    top: calc(100vw * 580 / 390);
+    left: 18px;
+    width: calc(100% - 36px);
     max-width: calc(100% - 36px);
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: calc((100vw - 36px) * 6 / 354);
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
 
   .architecture-mobile-bottom-line {
-    width: 354px;
+    width: 100%;
     max-width: 100%;
-    height: 30px;
-    line-height: 30px;
+    height: auto;
+    line-height: 1.05;
     display: block;
     text-align: left;
     font-family: var(--font-display, 'Funnel Display', sans-serif);
     font-weight: 800;
-    font-size: 44.3px;
+    font-size: calc((100vw - 36px) * 44.3 / 354);
     letter-spacing: 0;
     text-transform: uppercase;
     color: #FFFF28;
     margin: 0;
-    padding: 0;
+    padding: 0 0 2px 0;
     white-space: nowrap;
+    overflow: visible;
     box-sizing: border-box;
   }
 }

@@ -11,7 +11,6 @@
 .see-deeper-container {
   position: relative;
   width: 100%;
-  max-width: 1920px;
   display: flex;
   justify-content: flex-start;
   align-items: stretch;
@@ -47,14 +46,14 @@
 
 .see-deeper-title-line {
   position: absolute;
-  left: clamp(16px, 1.666vw, 31.99px);
+  left: clamp(16px, 1.666vw, 80px);
   margin: 0;
   padding: 0 0 0.25em 0;
   height: auto;
   font-family: 'Funnel Display', sans-serif;
   font-weight: 800;
   font-style: normal;
-  font-size: clamp(64px, 9.117vw, 175.04px);
+  font-size: clamp(64px, 9.117vw, 400px);
   line-height: 1;
   letter-spacing: 0%;
   text-transform: uppercase;
@@ -70,31 +69,31 @@
   -webkit-text-fill-color: transparent;
 }
 
-/* Line 1: SEE DEEPER. (width 1100, top: 5235.44 - 5218.44 = 17px) - Above leaf image */
+/* Line 1: SEE DEEPER. (width 1100, top: 17px at 1920px = 0.885vw) - Above leaf image */
 .see-deeper-title-line-1 {
-  top: clamp(8px, 0.885vw, 17px);
-  width: clamp(500px, 57.29vw, 1100px);
+  top: clamp(8px, 0.885vw, 50px);
+  width: clamp(500px, 57.29vw, 2400px);
   z-index: 8;
 }
 
-/* Line 2: AS IT HAPPENS. (width 1376, top: 5384.77 - 5218.44 = 166.33px) - Above leaf image (z-index 6) */
+/* Line 2: AS IT HAPPENS. (width 1376, top: 166.33px at 1920px = 8.663vw) - Above leaf image (z-index 6) */
 .see-deeper-title-line-2 {
-  top: clamp(76px, 8.663vw, 166.33px);
-  width: clamp(620px, 71.67vw, 1376px);
+  top: clamp(76px, 8.663vw, 400px);
+  width: clamp(620px, 71.67vw, 3000px);
   z-index: 8;
 }
 
-/* Line 3: NOTHING (width 825, top: 5534.11 - 5218.44 = 315.67px) - Below leaf image (z-index 6) */
+/* Line 3: NOTHING (width 825, top: 315.67px at 1920px = 16.44vw) - Below leaf image (z-index 6) */
 .see-deeper-title-line-3 {
-  top: clamp(144px, 16.44vw, 315.67px);
-  width: clamp(380px, 42.97vw, 825px);
+  top: clamp(144px, 16.44vw, 750px);
+  width: clamp(380px, 42.97vw, 1800px);
   z-index: 4;
 }
 
-/* Line 4: HAPPENS UNSEEN. (width 1664, top: 5683.45 - 5218.44 = 465.01px) - Below leaf image (z-index 6) */
+/* Line 4: HAPPENS UNSEEN. (width 1664, top: 465.01px at 1920px = 24.22vw) - Below leaf image (z-index 6) */
 .see-deeper-title-line-4 {
-  top: clamp(212px, 24.22vw, 465.01px);
-  width: clamp(750px, 86.67vw, 1664px);
+  top: clamp(212px, 24.22vw, 1100px);
+  width: clamp(750px, 86.67vw, 3600px);
   z-index: 4;
 }
 
@@ -107,9 +106,9 @@
 */
 .see-deeper-leaf-img {
   position: absolute;
-  top: clamp(40px, 5.3135vw, 102.02px);
-  left: clamp(60px, 13vw, 249.6px);
-  width: clamp(420px, 85.23vw, 1636.4px);
+  top: clamp(40px, 5.3135vw, 250px);
+  left: clamp(60px, 13vw, 600px);
+  width: clamp(420px, 85.23vw, 3600px);
   height: auto;
   aspect-ratio: 1636.4 / 844;
   object-fit: contain;
@@ -122,7 +121,7 @@
 /* Left Column: Width 1222px (63.646vw at 1920px) */
 .see-deeper-left-col {
   position: relative;
-  width: clamp(320px, 63.646vw, 1222px);
+  width: clamp(320px, 63.646vw, 3200px);
   flex-shrink: 0;
   display: flex;
   flex-direction: column;
@@ -133,8 +132,8 @@
 .see-deeper-left-top {
   position: relative;
   width: 100%;
-  min-height: clamp(300px, 31.25vw, 600px);
-  height: clamp(300px, 31.25vw, 600px);
+  min-height: clamp(300px, 31.25vw, 1500px);
+  height: clamp(300px, 31.25vw, 1500px);
   background-color: #00487C;
   opacity: 1;
   box-sizing: border-box;
@@ -176,8 +175,8 @@
 .see-deeper-left-bottom {
   position: relative;
   width: 100%;
-  min-height: clamp(450px, 46.875vw, 900px);
-  height: clamp(450px, 46.875vw, 900px);
+  min-height: clamp(450px, 46.875vw, 2250px);
+  height: clamp(450px, 46.875vw, 2250px);
   background-color: #340064;
   opacity: 1;
   box-sizing: border-box;
@@ -218,14 +217,14 @@
 /* Spec text in bottom-left waves box: width 344px, height 50px, top 20.34px, left 32px */
 .see-deeper-spec-text {
   position: absolute;
-  top: clamp(16px, 1.06vw, 20.34px);
-  left: clamp(20px, 1.67vw, 32px);
-  width: clamp(260px, 17.92vw, 344px);
+  top: clamp(16px, 1.06vw, 50px);
+  left: clamp(20px, 1.67vw, 80px);
+  width: clamp(260px, 17.92vw, 800px);
   min-height: 50px;
   font-family: var(--font-mono, 'Azeret Mono', monospace);
   font-weight: 300;
   font-style: normal;
-  font-size: clamp(10px, 0.625vw, 12px);
+  font-size: clamp(10px, 0.625vw, 24px);
   line-height: 100%;
   letter-spacing: 0%;
   text-align: justify;
@@ -263,8 +262,8 @@
 .see-deeper-right-top {
   position: relative;
   width: 100%;
-  min-height: clamp(500px, 49.27vw, 946px);
-  height: clamp(500px, 49.27vw, 946px);
+  min-height: clamp(500px, 49.27vw, 2365px);
+  height: clamp(500px, 49.27vw, 2365px);
   background-color: #192C09;
   opacity: 1;
   box-sizing: border-box;
@@ -319,14 +318,14 @@
 /* Spec text in right-top box: width 344px, height 36px, top: 620.34px, left: 312.2px */
 .see-deeper-right-spec-text {
   position: absolute;
-  top: clamp(320px, 32.31vw, 620.34px);
-  left: clamp(160px, 16.26vw, 312.2px);
-  width: clamp(260px, 17.92vw, 344px);
+  top: clamp(320px, 32.31vw, 1500px);
+  left: clamp(160px, 16.26vw, 800px);
+  width: clamp(260px, 17.92vw, 800px);
   min-height: 36px;
   font-family: var(--font-mono, 'Azeret Mono', monospace);
   font-weight: 300;
   font-style: normal;
-  font-size: clamp(10px, 0.625vw, 12px);
+  font-size: clamp(10px, 0.625vw, 24px);
   line-height: 100%;
   letter-spacing: 0%;
   text-align: justify;
@@ -344,8 +343,8 @@
 .see-deeper-right-bottom {
   position: relative;
   width: 100%;
-  min-height: clamp(280px, 28.85vw, 554px);
-  height: clamp(280px, 28.85vw, 554px);
+  min-height: clamp(280px, 28.85vw, 1385px);
+  height: clamp(280px, 28.85vw, 1385px);
   background-color: #006451;
   opacity: 1;
   box-sizing: border-box;
@@ -393,11 +392,11 @@
 .see-deeper-ticker-wrap {
   position: absolute;
   /* top: clamp(10px, 0.964vw, 18.51px); */
-  left: clamp(10px, 1.042vw, 20px);
-  width: clamp(320px, 34.27vw, 658px);
+  left: clamp(10px, 1.042vw, 50px);
+  width: clamp(320px, 34.27vw, 1600px);
   display: flex;
   flex-direction: column;
-  gap: clamp(2px, 0.28vw, 4px);
+  gap: clamp(2px, 0.28vw, 10px);
   pointer-events: none;
   user-select: none;
   z-index: 2;
@@ -413,7 +412,7 @@
   font-family: 'Funnel Display', sans-serif;
   font-weight: 800;
   font-style: normal;
-  font-size: clamp(20px, 2.371vw, 45.52px);
+  font-size: clamp(20px, 2.371vw, 100px);
   line-height: 1;
   letter-spacing: 0;
   text-transform: uppercase;
@@ -437,8 +436,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: clamp(200px, 18.646vw, 358px);
-  height: clamp(200px, 18.646vw, 358px);
+  width: clamp(200px, 18.646vw, 800px);
+  height: clamp(200px, 18.646vw, 800px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -677,15 +676,14 @@
     z-index: 5;
   }
 
-  /* 4-line Headline Group: width 354px, height 120.30859375px, top: 24.09px (3480.16 - 3456.07), left: 18px (centered in 390px) */
+  /* 4-line Headline Group: constant 18px side padding, compact height matching original layout */
   .see-deeper-mobile-headline {
     position: absolute;
-    top: 24.09px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 354px;
+    top: calc(100vw * 24.09 / 390);
+    left: 18px;
+    width: calc(100% - 36px);
     max-width: calc(100% - 36px);
-    height: 120.31px;
+    height: calc((100vw - 36px) * 120.31 / 354);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -694,20 +692,22 @@
     box-sizing: border-box;
   }
 
-  /* Each headline line: font-size 37.24px, Funnel Display ExtraBold, line-height 25px, #E0ECD9 with monotone noise (size 0.11, density 64%, #0000008A) */
+  /* Each headline line: compact line-height with descender clearance, no overlap */
   .see-deeper-mobile-title-line {
     display: block;
-    height: 28px;
-    line-height: 28px;
+    width: 100%;
+    max-width: 100%;
+    height: calc((100vw - 36px) * 28 / 354);
+    line-height: calc((100vw - 36px) * 28 / 354);
     font-family: var(--font-display, 'Funnel Display', sans-serif);
     font-weight: 800;
-    font-size: 37.24px;
+    font-size: calc((100vw - 36px) * 37.24 / 354);
     letter-spacing: 0;
     text-transform: uppercase;
     white-space: nowrap;
     margin: 0;
-    padding: 0 0 8px 0;
-    margin-bottom: -8px;
+    padding: 0 0 4px 0;
+    margin-bottom: -4px;
     overflow: visible;
     color: #E0ECD9;
     background-image:
@@ -719,20 +719,19 @@
     -webkit-text-fill-color: transparent;
   }
 
-  /* Enterprise Computing Spec Text: width 354px, height 36px, top: 179.48px (3635.55 - 3456.07), left: 18px (centered in 390px) */
+  /* Enterprise Computing Spec Text: constant 18px side padding, fluidly scaled */
   .see-deeper-mobile-spec-text {
     position: absolute;
-    top: 179.48px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 354px;
+    top: calc(100vw * 180 / 390);
+    left: 18px;
+    width: calc(100% - 36px);
     max-width: calc(100% - 36px);
-    height: 36px;
+    height: auto;
     font-family: var(--font-mono, 'Azeret Mono', monospace);
     font-weight: 300;
     font-style: normal;
-    font-size: 12px;
-    line-height: 12px;
+    font-size: calc((100vw - 36px) * 12 / 354);
+    line-height: 1.25;
     letter-spacing: 0;
     text-align: justify;
     text-justify: inter-word;
@@ -743,20 +742,19 @@
     box-sizing: border-box;
   }
 
-  /* Second Video Spec Text: width 354px, height 36px, top: 30px (4086.07 - 4056.07), left: 18px (centered in 390px) */
+  /* Second Video Spec Text: constant 18px side padding, fluidly scaled */
   .see-deeper-second-mobile-spec-text {
     position: absolute;
-    top: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 354px;
+    top: calc(100vw * 30 / 390);
+    left: 18px;
+    width: calc(100% - 36px);
     max-width: calc(100% - 36px);
-    height: 36px;
+    height: auto;
     font-family: var(--font-mono, 'Azeret Mono', monospace);
     font-weight: 300;
     font-style: normal;
-    font-size: 12px;
-    line-height: 12px;
+    font-size: calc((100vw - 36px) * 12 / 354);
+    line-height: 1.25;
     letter-spacing: 0;
     text-align: justify;
     text-justify: inter-word;

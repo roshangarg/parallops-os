@@ -342,18 +342,17 @@
     margin: 0;
   }
 
-  /* 1. Top Track Block: All 9 alternating horizontal lines stacked to exact Figma specifications */
+  /* 1. Top Track Block: All 9 alternating horizontal lines stacked edge-to-edge without side padding */
   .features-left-col {
-    width: 390.086px;
+    width: 100%;
     max-width: 100%;
-    height: 281.625px;
-    min-height: 281.625px;
+    height: auto;
+    min-height: auto;
     position: relative;
     background-color: #000000;
-    overflow-x: clip;
-    overflow-y: visible;
-    padding: 0;
-    margin: 0 auto;
+    overflow: visible;
+    /* padding: calc(100vw * 12 / 390) 0; */
+    margin: 0;
     box-sizing: border-box;
     flex-shrink: 0;
     display: flex;
@@ -369,25 +368,24 @@
   .features-v-track {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: flex-start;
-    width: 390px;
+    width: 100%;
     max-width: 100%;
-    height: 281.625px;
+    height: auto;
     position: relative;
+    gap: 0;
     padding: 0;
-    margin: 0 auto;
+    margin: 0;
     box-sizing: border-box;
     z-index: 1;
   }
 
   .features-v-col {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    width: 390px;
+    display: block;
+    width: 100%;
     max-width: 100%;
-    height: 23px;
+    height: auto;
     position: relative;
     padding: 0;
     margin: 0;
@@ -398,11 +396,11 @@
   .features-v-text {
     position: static;
     transform: none !important;
-    width: 390px;
+    width: 100%;
     max-width: 100%;
     height: auto;
-    min-height: 23px;
-    line-height: 100%;
+    min-height: auto;
+    line-height: 1;
     text-align: left;
     white-space: nowrap;
     font-family: var(--font-display, "Funnel Display", sans-serif);
@@ -412,13 +410,13 @@
     margin: 0;
     padding: 0 0 6px 0;
     margin-bottom: -6px;
-    display: inline-block;
+    display: block;
     overflow: visible;
   }
 
-  /* Built for businesses: font-size 33.49px, #E0ECD9 with monotone noise (size 0.11, density 64%, #0000008A) */
+  /* Built for businesses: fluidly scaled edge-to-edge without side padding */
   .features-v-text-built {
-    font-size: 33.49px;
+    font-size: calc(100vw * 33.49 / 390);
     color: #E0ECD9;
 
     background-image:
@@ -430,9 +428,9 @@
     -webkit-text-fill-color: transparent;
   }
 
-  /* Not just computers: font-size 34.36px, semi-transparent #E0ECD957 with monotone noise (size 0.11, density 64%, #0000008A) */
+  /* Not just computers: fluidly scaled edge-to-edge without side padding */
   .features-v-text-computers {
-    font-size: 34.36px;
+    font-size: calc(100vw * 34.36 / 390);
     color: rgba(224, 236, 217, 0.34);
 
     background-image:

@@ -78,9 +78,9 @@ export default function LifecycleSection() {
       const innerBox = container.querySelector('.lifecycle-inner-box')
       const stripThickness = (innerBox && innerBox.offsetTop > 0)
         ? innerBox.offsetTop
-        : Math.min(46, Math.max(28, (window.innerWidth / 1920) * 46))
+        : Math.max(28, (window.innerWidth / 1920) * 46)
       const pad = stripThickness / 2
-      const fontSize = Math.min(32, Math.max(18, (stripThickness / 46) * 32))
+      const fontSize = Math.max(18, (stripThickness / 46) * 32)
 
       const L_w = width - 2 * stripThickness
       const L_h = height - 2 * stripThickness
