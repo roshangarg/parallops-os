@@ -33,7 +33,7 @@ export default function ExecutionTrailSection() {
     <section className="trail-section" aria-label="Execution Trail Section">
       <div className="trail-container">
         {/* Background Marquee Text Rows */}
-        <div className="trail-bg-marquee" aria-hidden="true">
+        <div className="trail-bg-marquee trail-desktop-only" aria-hidden="true">
           {ROWS.map((row) => (
             <div key={row.id} className="trail-row">
               <div
@@ -59,14 +59,14 @@ export default function ExecutionTrailSection() {
         </div>
 
         {/* Monotone Noise Overlay (size 0.5, density 64%, color #0000008A) */}
-        <div className="trail-noise-overlay" aria-hidden="true" />
+        <div className="trail-noise-overlay trail-desktop-only" aria-hidden="true" />
 
         {/* Horizontal Scanlines Grid Overlay */}
-        <div className="trail-scanlines" aria-hidden="true" />
+        <div className="trail-scanlines trail-desktop-only" aria-hidden="true" />
 
         {/* Center Grid Dividing Lines */}
-        <div className="trail-divider-vertical" aria-hidden="true" />
-        <div className="trail-divider-horizontal" aria-hidden="true" />
+        <div className="trail-divider-vertical trail-desktop-only" aria-hidden="true" />
+        <div className="trail-divider-horizontal trail-desktop-only" aria-hidden="true" />
 
         {/* 2x2 Grid of 4 Boxes (each 960px x 400px at 1920px width)
             Box 1 (top-left): Video 1 (to be added next)
@@ -116,7 +116,7 @@ export default function ExecutionTrailSection() {
               />
             </div>
           </div>
-          <div className="trail-box trail-box-2" data-box="2">
+          <div className="trail-box trail-box-2 trail-desktop-only" data-box="2">
             <img
               src={executionGrid2Img}
               alt=""
@@ -125,7 +125,7 @@ export default function ExecutionTrailSection() {
               className="trail-box-2-img"
             />
           </div>
-          <div className="trail-box trail-box-3" data-box="3">
+          <div className="trail-box trail-box-3 trail-desktop-only" data-box="3">
             <img
               src={executionGrid3Img}
               alt=""

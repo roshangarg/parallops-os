@@ -270,7 +270,11 @@
   justify-content: flex-start;
 }
 
-@media (max-width: 900px) {
+.architecture-mobile-wrap {
+  display: none;
+}
+
+@media (max-width: 900px) and (min-width: 769px) {
   .architecture-bolted-text {
     font-size: 18px;
     width: auto;
@@ -281,5 +285,174 @@
     left: 16px;
     width: 280px;
     font-size: 10px;
+  }
+}
+
+/* ==========================================================================
+   Mobile Screens (<= 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+
+  .architecture-desktop-only,
+  .architecture-watermark,
+  .architecture-bottom-bar,
+  .architecture-bolted-text {
+    display: none !important;
+  }
+
+  .architecture-section {
+    width: 100%;
+    overflow-x: clip;
+    background-color: #24004B;
+  }
+
+  .architecture-main {
+    width: 100%;
+    min-height: 800px;
+    height: 800px;
+    position: relative;
+    background-color: #24004B;
+    overflow: hidden;
+    display: block;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Video Background: takes complete 100% width and height of root mobile layout */
+  .architecture-video-bg {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    mix-blend-mode: color-dodge;
+    opacity: 1;
+    z-index: 2;
+    pointer-events: none;
+    transform: none !important;
+  }
+
+  /* Mobile Content Container */
+  .architecture-mobile-wrap {
+    display: block !important;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  /* 1. Top Title: NOT BOLTED ON (width 354, top 30px, 44.3px #FFFF28) */
+  .architecture-mobile-top-title {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 354px;
+    max-width: calc(100% - 36px);
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    text-align: left;
+    font-family: var(--font-display, 'Funnel Display', sans-serif);
+    font-weight: 800;
+    font-size: 44.3px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #FFFF28;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+
+  /* 2. Description text: width 250, height 50, top 124px, 12px Azeret Mono Light #E0ECD9 */
+  .architecture-mobile-desc {
+    position: absolute;
+    top: 124px;
+    left: calc(50% - 161px);
+    width: 250px;
+    max-width: calc(100% - 68px);
+    font-family: var(--font-mono, 'Azeret Mono', monospace);
+    font-weight: 300;
+    font-size: 12px;
+    line-height: 1.25;
+    letter-spacing: 0;
+    text-align: justify;
+    text-justify: inter-word;
+    text-transform: uppercase;
+    color: #E0ECD9;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* 3. Center Concentric Rotating Badge: width/height 323.63px, top 238px, difference blend */
+  .architecture-badge-wrapper {
+    position: absolute;
+    top: 238px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 323.625px;
+    height: 323.634px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    mix-blend-mode: difference;
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  .architecture-circle-large {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform-origin: center center;
+    animation: rotateClockwise 24s linear infinite;
+  }
+
+  .architecture-circle-small {
+    position: absolute;
+    width: 281px;
+    height: 281px;
+    object-fit: contain;
+    transform-origin: center center;
+    animation: rotateAnticlockwise 18s linear infinite;
+  }
+
+  /* 4. Bottom Stack: 4 lines of NOT BOLTED ON (gap 14px, top 584px, width 354, 44.3px #FFFF28) */
+  .architecture-mobile-bottom-stack {
+    position: absolute;
+    top: 600px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 354px;
+    max-width: calc(100% - 36px);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .architecture-mobile-bottom-line {
+    width: 354px;
+    max-width: 100%;
+    height: 30px;
+    line-height: 30px;
+    display: block;
+    text-align: left;
+    font-family: var(--font-display, 'Funnel Display', sans-serif);
+    font-weight: 800;
+    font-size: 44.3px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #FFFF28;
+    margin: 0;
+    padding: 0;
+    white-space: nowrap;
+    box-sizing: border-box;
   }
 }

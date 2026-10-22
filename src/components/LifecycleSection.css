@@ -196,3 +196,183 @@
       rgba(224, 236, 217, 0.15) 12px);
   z-index: 10;
 }
+
+/* Mobile overlay hidden on desktop by default */
+.lifecycle-mobile-only {
+  display: none !important;
+}
+
+/* ========================================================
+   Mobile Screen (max-width: 768px)
+   ======================================================== */
+@media (max-width: 768px) {
+  .lifecycle-desktop-only {
+    display: none !important;
+  }
+
+  .lifecycle-mobile-only {
+    display: block !important;
+  }
+
+  /* Scanlines, snake canvas, slanted text, borders, video hidden on mobile */
+  .lifecycle-grid,
+  .lifecycle-snake-canvas,
+  .lifecycle-slanted-wrapper,
+  .lifecycle-border-frame,
+  .lifecycle-inner-box,
+  .lifecycle-fg-img,
+  .lifecycle-video {
+    display: none !important;
+  }
+
+  /* Section & Container: width 100%, height 500px, bg #CAF0A4, overflow hidden */
+  .lifecycle-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #CAF0A4 !important;
+    overflow-x: clip;
+    display: flex;
+    justify-content: center;
+  }
+
+  .lifecycle-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 500px !important;
+    height: 500px !important;
+    background-color: #CAF0A4 !important;
+    overflow: hidden !important;
+    position: relative !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+  }
+
+  /* Mobile Background Image (staysecureimg.webp):
+     Takes 100% full width and height of container (not zoomed in or cropped),
+     z-index: 1 (below text)
+  */
+  .lifecycle-mobile-bg-img {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
+    object-position: center;
+    mix-blend-mode: darken;
+    mix-blend-mode: plus-darker;
+    opacity: 1;
+    pointer-events: none;
+    user-select: none;
+    z-index: 1;
+  }
+
+  /* Mobile Flowers Image (lifecycleimg.webp):
+     width: 600px, height: 235.625px, top: 264.37px (5120.63 - 4856.26), left: -105px on 390px
+     centered horizontally via left: 50%; transform: translateX(-50%)
+     cut from left & right sides by overflow: hidden
+     z-index: 3 (above text)
+  */
+  .lifecycle-mobile-flowers-img {
+    position: absolute;
+    top: 264.37px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    max-width: none !important;
+    height: 235.625px;
+    object-fit: cover;
+    opacity: 1;
+    pointer-events: none;
+    user-select: none;
+    z-index: 3;
+  }
+
+  /* Text Wrapper: z-index 2 (above staysecureimg at z-index 1, below lifecycleimg at z-index 3) */
+  .lifecycle-mobile-text-wrap {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Common style for 4 headline words */
+  .lifecycle-mobile-word {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 354px;
+    max-width: calc(100% - 36px);
+    margin: 0;
+    overflow: visible;
+    white-space: nowrap;
+    font-family: var(--font-display, 'Funnel Display', sans-serif);
+    font-weight: 800;
+    font-style: normal;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #E0ECD9;
+    background-repeat: repeat, no-repeat;
+    background-size: 60px 60px, 100% 300%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    user-select: none;
+  }
+
+  /* Word 1: STAY - top: 54.58px, height increased to 125px (line-height 110px), font-size: 145.68px, noise size 0.42 (baseFrequency: 1.2), density 64% */
+  .lifecycle-mobile-word-stay {
+    top: 54.58px;
+    height: 125px;
+    line-height: 110px;
+    padding: 0 0 20px 0;
+    margin-bottom: -20px;
+    font-size: 145.68px;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cfilter id='lc-noise-stay'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.64 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23lc-noise-stay)' opacity='0.54'/%3E%3C/svg%3E"),
+      linear-gradient(#E0ECD9, #E0ECD9);
+  }
+
+  /* Word 2: SECURE - top: 184.31px, height increased to 80px (line-height 70px), font-size: 88.47px, noise size 0.25 (baseFrequency: 2.0), density 64% */
+  .lifecycle-mobile-word-secure {
+    top: 184.31px;
+    height: 80px;
+    line-height: 70px;
+    padding: 0 0 15px 0;
+    margin-bottom: -15px;
+    font-size: 88.47px;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cfilter id='lc-noise-secure'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.0' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.64 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23lc-noise-secure)' opacity='0.54'/%3E%3C/svg%3E"),
+      linear-gradient(#E0ECD9, #E0ECD9);
+  }
+
+  /* Word 3: SUPPORTED - top: 276.03px, height increased to 54px (line-height 48px), font-size: 57.82px, noise size 0.17 (baseFrequency: 2.9), density 64% */
+  .lifecycle-mobile-word-supported {
+    top: 276.03px;
+    height: 54px;
+    line-height: 48px;
+    padding: 0 0 12px 0;
+    margin-bottom: -12px;
+    font-size: 57.82px;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cfilter id='lc-noise-supported'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.64 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23lc-noise-supported)' opacity='0.54'/%3E%3C/svg%3E"),
+      linear-gradient(#E0ECD9, #E0ECD9);
+  }
+
+  /* Word 4: CURRENT - top: 346.76px, height increased to 66px (line-height 58px), font-size: 72.43px, noise size 0.21 (baseFrequency: 2.4), density 64% */
+  .lifecycle-mobile-word-current {
+    top: 346.76px;
+    height: 66px;
+    line-height: 58px;
+    padding: 0 0 15px 0;
+    margin-bottom: -15px;
+    font-size: 72.43px;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cfilter id='lc-noise-current'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.4' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.64 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23lc-noise-current)' opacity='0.54'/%3E%3C/svg%3E"),
+      linear-gradient(#E0ECD9, #E0ECD9);
+  }
+}

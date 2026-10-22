@@ -50,6 +50,11 @@
   object-fit: contain;
 }
 
+.hero-img-mobile {
+  display: none;
+}
+
+
 /* Left Hero Image:
    - Anchored to the top-left (left: 0, top: 0)
    - Completely visible without getting cut off, fluidly scales on tablet
@@ -267,36 +272,171 @@
 
 @media (max-width: 768px) {
   .hero-section {
-    min-height: clamp(520px, 82vw, 650px);
-    padding-top: clamp(110px, 18vw, 145px);
+    min-height: clamp(500px, 70vw, 550px);
+    padding-top: clamp(145px, 50vw, 285px);
+    /* padding-top: 205px; */
+    overflow-x: clip;
   }
 
-  .hero-img-left {
-    width: clamp(300px, 72vw, 560px);
+  .hero-bg-wrapper {
+    overflow: visible;
   }
 
-  .hero-img-right {
-    width: clamp(320px, 68vw, 530px);
+  .hero-img-desktop {
+    display: none !important;
+  }
+
+  .hero-img-mobile {
+    display: block;
+    position: absolute;
+    max-width: none;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  .hero-img-left-mobile {
+    top: -15px;
+    left: 0;
+    width: clamp(190px, 90vw, 580px);
+    height: 650px;
+    opacity: 1;
+    z-index: 2;
+  }
+
+  .hero-img-right-mobile {
+    top: -15px;
+    right: 0;
+    left: auto;
+    width: clamp(200px, 66vw, 265px);
+    height: auto;
+    opacity: 1;
+    z-index: 2;
   }
 
   .hero-bottom-bar {
     height: clamp(16px, 1.77vw, 22px);
   }
 
-  .hero-title-box {
-    max-width: 92vw;
-    gap: clamp(6px, 1vw, 10px);
+  .hero-content {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 18px;
+    box-sizing: border-box;
   }
 
-  .hero-corner-text {
-    font-size: clamp(11px, 2.3vw, 18px);
+  .hero-title-box {
+    position: relative;
+    top: auto;
+    left: auto;
+    margin: 0 auto;
+    width: 354px;
+    max-width: 100%;
+    height: 147px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    mix-blend-mode: difference;
+    opacity: 1;
+    z-index: 10;
+  }
+
+  /* No noise overlay on mobile text */
+  .hero-title-noise {
+    display: none !important;
+  }
+
+  /* Top corner row for single line PURPOSE BUILT */
+  .hero-corner-row.hero-corner-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 354px;
+    max-width: 100%;
+    height: 31px;
+    padding: 0;
+    margin: 0;
+  }
+
+  .hero-corner-text-secondary {
+    display: none !important;
+  }
+
+  .hero-corner-row.hero-corner-bottom {
+    display: none !important;
+  }
+
+  .hero-corner-text-primary {
+    font-family: var(--font-display);
+    font-weight: 300;
+    font-size: 46.36px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #E0ECD9;
+    width: 354px;
+    max-width: 100%;
+    height: 31px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    white-space: nowrap;
+    mix-blend-mode: normal;
+  }
+
+  .hero-main-title {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 354px;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
   }
 
   .hero-title-operating {
-    font-size: clamp(38px, 10.42vw, 82px);
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 60.82px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #E0ECD9;
+    width: 354px;
+    max-width: 100%;
+    height: 41px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+    white-space: nowrap;
+    mix-blend-mode: normal;
   }
 
   .hero-title-systems {
-    font-size: clamp(46px, 12.98vw, 102px);
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 75.8px;
+    line-height: 100%;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #E0ECD9;
+    width: 354px;
+    max-width: 100%;
+    height: 51px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+    white-space: nowrap;
+    mix-blend-mode: normal;
   }
 }

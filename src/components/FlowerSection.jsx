@@ -14,7 +14,7 @@ export default function FlowerSection() {
     <section className="flower-section" aria-label="Flower Section">
       <div className="flower-container">
         {/* Left Flower (224px x 224px, static) */}
-        <div className="flower-side-wrapper flower-side-left">
+        <div className="flower-side-wrapper flower-side-left flower-desktop-only">
           <img
             src={flowerLandRImg}
             alt="Left blue flower"
@@ -88,7 +88,7 @@ export default function FlowerSection() {
         </div>
 
         {/* Right Flower (224px x 224px, static) */}
-        <div className="flower-side-wrapper flower-side-right">
+        <div className="flower-side-wrapper flower-side-right flower-desktop-only">
           <img
             src={flowerLandRImg}
             alt="Right blue flower"

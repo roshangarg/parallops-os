@@ -77,12 +77,19 @@ void main() {
 
   vec2 uv = norm;
   if (u_videoResolution.x > 0.0 && u_videoResolution.y > 0.0) {
-    float cAspect = u_resolution.x / u_resolution.y;
-    float vAspect = u_videoResolution.x / u_videoResolution.y;
-
-    if (u_rotation == 90.0 || u_rotation == -90.0 || u_rotation == 270.0) {
-      vAspect = u_videoResolution.y / u_videoResolution.x;
+    vec2 p = norm - vec2(0.5);
+    if (u_rotation == 90.0) {
+      norm = clamp(vec2(p.y, -p.x) + vec2(0.5), 0.0, 1.0);
+    } else if (u_rotation == -90.0 || u_rotation == 270.0) {
+      norm = clamp(vec2(-p.y, p.x) + vec2(0.5), 0.0, 1.0);
+    } else if (u_rotation == 180.0) {
+      norm = clamp(vec2(1.0) - norm, 0.0, 1.0);
     }
+
+    float cAspect = (u_rotation == 90.0 || u_rotation == -90.0 || u_rotation == 270.0)
+      ? (u_resolution.y / u_resolution.x)
+      : (u_resolution.x / u_resolution.y);
+    float vAspect = u_videoResolution.x / u_videoResolution.y;
 
     if (u_cropMode == 1) {
       // Centered scale-crop: perfectly centers the video in the container
@@ -96,7 +103,7 @@ void main() {
         uv.y = clamp(norm.y + u_cropShift.y, 0.0, 1.0);
       }
     } else {
-      // Legacy Scale-crop: cut from left and bottom (anchor to top-right)
+      // Scale-crop: cover container
       if (cAspect > vAspect) {
         float sY = vAspect / cAspect;
         uv.y = clamp(norm.y * sY + u_cropShift.y, 0.0, 1.0);
@@ -106,16 +113,6 @@ void main() {
         uv.x = clamp(u_cropShift.x + norm.x * (1.0 - u_cropShift.x) * sX, 0.0, 1.0);
         uv.y = clamp(norm.y + u_cropShift.y, 0.0, 1.0);
       }
-    }
-
-    if (u_rotation == 90.0) {
-      vec2 p = uv - vec2(0.5);
-      uv = clamp(vec2(p.y, -p.x) + vec2(0.5), 0.0, 1.0);
-    } else if (u_rotation == -90.0 || u_rotation == 270.0) {
-      vec2 p = uv - vec2(0.5);
-      uv = clamp(vec2(-p.y, p.x) + vec2(0.5), 0.0, 1.0);
-    } else if (u_rotation == 180.0) {
-      uv = clamp(vec2(1.0) - uv, 0.0, 1.0);
     }
   }
 

@@ -33,7 +33,7 @@ export default function SeeDeeperSection() {
         <div className="see-deeper-grid" aria-hidden="true" />
 
         {/* Main Headline Rows: 4 lines with monotone noise starting at left: 31.99px */}
-        <div className="see-deeper-headline-group" aria-label="SEE DEEPER. AS IT HAPPENS. NOTHING HAPPENS UNSEEN.">
+        <div className="see-deeper-headline-group see-deeper-desktop-only" aria-label="SEE DEEPER. AS IT HAPPENS. NOTHING HAPPENS UNSEEN.">
           <h2 className="see-deeper-title-line see-deeper-title-line-1">
             SEE DEEPER.
           </h2>
@@ -64,6 +64,19 @@ export default function SeeDeeperSection() {
           <div className="see-deeper-left-top">
             <div className="see-deeper-top-noise" aria-hidden="true" />
 
+            {/* Mobile First Grid Overlay: 4 headline lines + enterprise computing spec text */}
+            <div className="see-deeper-mobile-first-grid see-deeper-mobile-only">
+              <div className="see-deeper-mobile-headline" aria-label="SEE DEEPER. AS IT HAPPENS. NOTHING HAPPENS UNSEEN.">
+                <span className="see-deeper-mobile-title-line">SEE DEEPER.</span>
+                <span className="see-deeper-mobile-title-line">AS IT HAPPENS.</span>
+                <span className="see-deeper-mobile-title-line">NOTHING</span>
+                <span className="see-deeper-mobile-title-line">HAPPENS UNSEEN.</span>
+              </div>
+              <p className="see-deeper-mobile-spec-text">
+                ENTERPRISE COMPUTING IS BECOMING INCREASINGLY HETEROGENEOUS BUT OPERATING SYSTEMS STILL PRESENT AS GENERIC COMPUTING MODEL
+              </p>
+            </div>
+
             <DitherVideo
               src={seeDeeperTopVideo}
               className="see-deeper-video"
@@ -89,9 +102,14 @@ export default function SeeDeeperSection() {
           <div className="see-deeper-left-bottom">
             <div className="see-deeper-bottom-noise" aria-hidden="true" />
 
-            {/* Spec Text on top-left of waves box */}
-            <p className="see-deeper-spec-text">
+            {/* Spec Text on top-left of waves box (Desktop) */}
+            <p className="see-deeper-spec-text see-deeper-desktop-only">
               ENTERPRISE COMPUTING IS BECOMING INCREASINGLY HETEROGENEOUS BUT OPERATING SYSTEMS STILL PRESENT AS GENERIC COMPUTING MODEL
+            </p>
+
+            {/* Mobile Spec Text for second video */}
+            <p className="see-deeper-second-mobile-spec-text see-deeper-mobile-only">
+              PROVIDE UNIFIED VISIBILITY INTO SYSTEM, APPLICATION, NETWORK, AND HARDWARE PERFORMANCE
             </p>
 
             <DitherVideo

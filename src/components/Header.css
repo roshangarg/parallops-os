@@ -35,3 +35,22 @@
 .header-logo:hover {
   opacity: 0.9;
 }
+
+/* Mobile Screens */
+@media (max-width: 768px) {
+  .header {
+    /* padding-top: 74.36px; */
+  }
+
+  .logo-link {
+    border-radius: 1.22px;
+  }
+
+  .header-logo {
+    width: 83px;
+    height: 21.855px;
+    border-radius: 1.22px;
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+}

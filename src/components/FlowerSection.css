@@ -167,12 +167,43 @@
 }
 
 /* ==========================================================================
-   Responsive Scaling
+   Responsive Scaling & Mobile Screen
    ========================================================================== */
 
-@media (max-width: 920px) {
+@media (max-width: 920px) and (min-width: 769px) {
   .flower-container {
     transform: scale(min(1, calc((100vw - 40px) / 871)));
     transform-origin: center center;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Left and right side flowers not visible on mobile */
+  .flower-side-wrapper,
+  .flower-desktop-only {
+    display: none !important;
+  }
+
+  .flower-section {
+    width: 100% !important;
+    padding-top: clamp(80px, 20vw, 120px);
+    padding-bottom: clamp(80px, 20vw, 120px);
+  }
+
+  .flower-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-height: 322.98px !important;
+    gap: 0 !important;
+    transform: scale(min(1, calc((100vw - 32px) / 323))) !important;
+    transform-origin: center center;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .flower-center-box {
+    margin: 0 auto;
   }
 }

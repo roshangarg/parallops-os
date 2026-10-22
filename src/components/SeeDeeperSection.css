@@ -555,76 +555,223 @@
   }
 }
 
+/* Mobile overlay hidden on desktop by default */
+.see-deeper-mobile-only {
+  display: none !important;
+}
+
 @media (max-width: 768px) {
-  .see-deeper-title-line {
-    font-size: clamp(36px, 9vw, 68px);
+  .see-deeper-desktop-only {
+    display: none !important;
   }
 
-  .see-deeper-title-line-1 {
-    top: clamp(8px, 1.5vw, 12px);
+  .see-deeper-mobile-only {
+    display: block !important;
   }
 
-  .see-deeper-title-line-2 {
-    top: clamp(44px, 7.5vw, 58px);
+  /* Scanlines grid lines are not visible on mobile */
+  .see-deeper-grid {
+    display: none !important;
   }
 
-  .see-deeper-title-line-3 {
-    top: clamp(80px, 14vw, 108px);
+  /* Leaf image and right side 2 grids are not visible on mobile */
+  .see-deeper-leaf-img,
+  .see-deeper-right-col {
+    display: none !important;
   }
 
-  .see-deeper-title-line-4 {
-    top: clamp(116px, 20vw, 154px);
+  .see-deeper-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--bg-frame, #000000);
+    overflow-x: clip;
   }
 
-  .see-deeper-leaf-img {
-    top: clamp(25px, 4.5vw, 38px);
-    left: clamp(40px, 9vw, 70px);
-    width: clamp(420px, 82vw, 630px);
+  .see-deeper-container {
+    flex-direction: column;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    position: relative;
   }
 
+  .see-deeper-left-col {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* First Grid Layout on Mobile:
+     Takes complete available screen width with NO left or right padding.
+     Height: 600px.
+     Remove large screen bg color #00487C, takes app background color.
+  */
+  /* First Video Container */
   .see-deeper-left-top {
-    min-height: clamp(200px, 31.25vw, 240px);
-    height: clamp(200px, 31.25vw, 240px);
+    position: relative;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 600px !important;
+    height: 600px !important;
+    background-color: transparent !important;
+    overflow: hidden;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
+  /* First Video inside first grid on mobile: takes complete available screen width */
+  .see-deeper-left-top .see-deeper-video {
+    position: absolute;
+    inset: 0;
+    width: 100% !important;
+    height: 100% !important;
+    mix-blend-mode: difference;
+    z-index: 2;
+  }
+
+  /* Second Video Container: height 800px, crops video from left & right */
   .see-deeper-left-bottom {
-    min-height: clamp(300px, 46.875vw, 360px);
-    height: clamp(300px, 46.875vw, 360px);
+    position: relative;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 800px !important;
+    height: 800px !important;
+    background-color: #340064;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
+  /* Second Video on mobile: width 1086.22px, height 800px, centered horizontally (cropped from left and right), mix-blend-mode: overlay */
+  .see-deeper-left-bottom .see-deeper-video {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1086.22px !important;
+    max-width: none !important;
+    height: 800px !important;
+    mix-blend-mode: overlay;
+    z-index: 2;
+  }
+
+  /* Remove desktop blue duotone noise overlay on mobile */
+  .see-deeper-top-noise {
+    display: none !important;
+  }
+
+  /* Mobile First Grid Content Wrapper */
+  .see-deeper-mobile-first-grid {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  /* 4-line Headline Group: width 354px, height 120.30859375px, top: 24.09px (3480.16 - 3456.07), left: 18px (centered in 390px) */
+  .see-deeper-mobile-headline {
+    position: absolute;
+    top: 24.09px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 354px;
+    max-width: calc(100% - 36px);
+    height: 120.31px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Each headline line: font-size 37.24px, Funnel Display ExtraBold, line-height 25px, #E0ECD9 with monotone noise (size 0.11, density 64%, #0000008A) */
+  .see-deeper-mobile-title-line {
+    display: block;
+    height: 28px;
+    line-height: 28px;
+    font-family: var(--font-display, 'Funnel Display', sans-serif);
+    font-weight: 800;
+    font-size: 37.24px;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0 0 8px 0;
+    margin-bottom: -8px;
+    overflow: visible;
+    color: #E0ECD9;
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cfilter id='sd-mb-noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4.5' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.64 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23sd-mb-noise)' opacity='0.54'/%3E%3C/svg%3E"),
+      linear-gradient(#E0ECD9, #E0ECD9);
+    background-repeat: repeat, no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Enterprise Computing Spec Text: width 354px, height 36px, top: 179.48px (3635.55 - 3456.07), left: 18px (centered in 390px) */
+  .see-deeper-mobile-spec-text {
+    position: absolute;
+    top: 179.48px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 354px;
+    max-width: calc(100% - 36px);
+    height: 36px;
+    font-family: var(--font-mono, 'Azeret Mono', monospace);
+    font-weight: 300;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0;
+    text-align: justify;
+    text-justify: inter-word;
+    text-transform: uppercase;
+    color: #E0ECD9;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* Second Video Spec Text: width 354px, height 36px, top: 30px (4086.07 - 4056.07), left: 18px (centered in 390px) */
+  .see-deeper-second-mobile-spec-text {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 354px;
+    max-width: calc(100% - 36px);
+    height: 36px;
+    font-family: var(--font-mono, 'Azeret Mono', monospace);
+    font-weight: 300;
+    font-style: normal;
+    font-size: 12px;
+    line-height: 12px;
+    letter-spacing: 0;
+    text-align: justify;
+    text-justify: inter-word;
+    text-transform: uppercase;
+    color: #E0ECD9;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  /* Hide desktop headline group and spec text inside waves box on mobile */
+  .see-deeper-headline-group,
   .see-deeper-spec-text {
-    width: clamp(200px, 85%, 280px);
-    font-size: 10px;
-  }
-
-  .see-deeper-right-top {
-    min-height: clamp(315px, 49.27vw, 378px);
-    height: clamp(315px, 49.27vw, 378px);
-  }
-
-  .see-deeper-right-spec-text {
-    top: auto;
-    bottom: clamp(14px, 2vw, 20px);
-    left: clamp(14px, 2vw, 18px);
-    width: clamp(200px, 88%, 260px);
-    font-size: 10px;
-  }
-
-  .see-deeper-right-bottom {
-    min-height: clamp(185px, 28.85vw, 222px);
-    height: clamp(185px, 28.85vw, 222px);
-  }
-
-  .see-deeper-ticker-wrap {
-    width: clamp(200px, 92%, 260px);
-  }
-
-  .see-deeper-ticker-line {
-    font-size: clamp(14px, 2.3vw, 22px);
-  }
-
-  .see-deeper-badge-wrapper {
-    width: clamp(130px, 18.6vw, 150px);
-    height: clamp(130px, 18.6vw, 150px);
+    display: none !important;
   }
 }

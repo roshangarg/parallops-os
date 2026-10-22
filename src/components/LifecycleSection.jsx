@@ -3,6 +3,7 @@ import './LifecycleSection.css'
 import DitherVideo from './DitherVideo'
 import lifecycleVideo from '../assets/lifecycleVideo.webm'
 import lifecycleImg from '../assets/lifecycleimg.webp'
+import staysecureImg from '../assets/staysecureimg.webp'
 
 const PHRASES = [
   { text: 'STAY SECURE', color: '#E0ECD9' },
@@ -267,7 +268,7 @@ export default function LifecycleSection() {
     <section className="lifecycle-section">
       <div className="lifecycle-container" ref={containerRef}>
         {/* Slanted Watermark Text Overlay: "A LIFECYCLE WITHOUT THE SURPRISES" (below video) */}
-        <div className="lifecycle-slanted-wrapper" aria-hidden="true">
+        <div className="lifecycle-slanted-wrapper lifecycle-desktop-only" aria-hidden="true">
           <div className="lifecycle-slanted-content">
             {Array.from({ length: 38 }).map((_, rIdx) => (
               <div
@@ -287,10 +288,10 @@ export default function LifecycleSection() {
           </div>
         </div>
 
-        {/* Dither Video: 1920x1080 at top: -89.5px, Hard Light blend mode */}
+        {/* Dither Video: 1920x1080 at top: -89.5px, Hard Light blend mode (Desktop) */}
         <DitherVideo
           src={lifecycleVideo}
-          className="lifecycle-video"
+          className="lifecycle-video lifecycle-desktop-only"
           style="threshold"
           crop="center"
           size={1}
@@ -309,32 +310,60 @@ export default function LifecycleSection() {
           }}
         />
 
-        {/* Outer 46px Border Channel with background #1D3E0B */}
-        <div className="lifecycle-border-frame" aria-hidden="true">
+        {/* Outer 46px Border Channel with background #1D3E0B (Desktop) */}
+        <div className="lifecycle-border-frame lifecycle-desktop-only" aria-hidden="true">
           <div className="lifecycle-border-strip-top" />
           <div className="lifecycle-border-strip-bottom" />
           <div className="lifecycle-border-strip-left" />
           <div className="lifecycle-border-strip-right" />
         </div>
 
-        {/* Framed Inner Box with border: 1px solid #E0ECD9 (1828px x 808px) */}
-        <div className="lifecycle-inner-box" aria-hidden="true" />
+        {/* Framed Inner Box with border: 1px solid #E0ECD9 (Desktop) */}
+        <div className="lifecycle-inner-box lifecycle-desktop-only" aria-hidden="true" />
 
-        {/* Continuous Snake Perimeter Ticker Canvas */}
-        <canvas className="lifecycle-snake-canvas" ref={canvasRef} aria-hidden="true" />
+        {/* Continuous Snake Perimeter Ticker Canvas (Desktop) */}
+        <canvas className="lifecycle-snake-canvas lifecycle-desktop-only" ref={canvasRef} aria-hidden="true" />
 
-        {/* Foreground Flowers Image: 1920x754 at top 146.19px */}
+        {/* Foreground Flowers Image: 1920x754 at top 146.19px (Desktop) */}
         <img
           src={lifecycleImg}
           alt=""
           loading="lazy"
           decoding="async"
-          className="lifecycle-fg-img"
+          className="lifecycle-fg-img lifecycle-desktop-only"
           aria-hidden="true"
         />
 
-        {/* Horizontal scanlines grid overlay */}
-        <div className="lifecycle-grid" aria-hidden="true" />
+        {/* Horizontal scanlines grid overlay (Desktop) */}
+        <div className="lifecycle-grid lifecycle-desktop-only" aria-hidden="true" />
+
+        {/* Mobile Background Image replacing video: staysecureimg.webp (1066.67px x 500px, mix-blend-mode: plus-darker) */}
+        <img
+          src={staysecureImg}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          className="lifecycle-mobile-bg-img lifecycle-mobile-only"
+          aria-hidden="true"
+        />
+
+        {/* Mobile Flowers Image: 600px x 235.625px at top 264.37px, centered and cropped */}
+        <img
+          src={lifecycleImg}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          className="lifecycle-mobile-flowers-img lifecycle-mobile-only"
+          aria-hidden="true"
+        />
+
+        {/* Mobile 4-word stacked headline overlay */}
+        <div className="lifecycle-mobile-text-wrap lifecycle-mobile-only" aria-label="STAY SECURE SUPPORTED CURRENT">
+          <div className="lifecycle-mobile-word lifecycle-mobile-word-stay">STAY</div>
+          <div className="lifecycle-mobile-word lifecycle-mobile-word-secure">SECURE</div>
+          <div className="lifecycle-mobile-word lifecycle-mobile-word-supported">SUPPORTED</div>
+          <div className="lifecycle-mobile-word lifecycle-mobile-word-current">CURRENT</div>
+        </div>
       </div>
     </section>
   )

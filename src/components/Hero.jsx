@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import heroLeft from '../assets/heroleftimg.webp'
 import heroRight from '../assets/herorightimg.webp'
+import mobileHeroLeft from '../assets/mobileHeroLeft.png'
+import mobileHeroright from '../assets/mobileHeroright.png'
 import './Hero.css'
 
 export default function Hero() {
@@ -12,11 +14,12 @@ export default function Hero() {
       <div className="hero-grid-lines" aria-hidden="true" />
 
       <div className="hero-bg-wrapper">
+        {/* Desktop images */}
         <img
           src={heroLeft}
           alt=""
-          className="hero-img hero-img-left"
-          loading="lazy"
+          className="hero-img hero-img-left hero-img-desktop"
+          loading="eager"
           decoding="async"
           aria-hidden="true"
           onLoad={(e) => {
@@ -30,8 +33,8 @@ export default function Hero() {
         <img
           src={heroRight}
           alt=""
-          className="hero-img hero-img-right"
-          loading="lazy"
+          className="hero-img hero-img-right hero-img-desktop"
+          loading="eager"
           decoding="async"
           aria-hidden="true"
           onLoad={(e) => {
@@ -41,6 +44,24 @@ export default function Hero() {
             }
           }}
           style={rightRatio ? { aspectRatio: rightRatio } : undefined}
+        />
+
+        {/* Mobile images */}
+        <img
+          src={mobileHeroLeft}
+          alt=""
+          className="hero-img-mobile hero-img-left-mobile"
+          loading="eager"
+          decoding="async"
+          aria-hidden="true"
+        />
+        <img
+          src={mobileHeroright}
+          alt=""
+          className="hero-img-mobile hero-img-right-mobile"
+          loading="eager"
+          decoding="async"
+          aria-hidden="true"
         />
       </div>
 
@@ -53,8 +74,8 @@ export default function Hero() {
 
           {/* Top corner labels */}
           <div className="hero-corner-row hero-corner-top">
-            <span className="hero-corner-text">Purpose Built</span>
-            <span className="hero-corner-text">Purpose Built</span>
+            <span className="hero-corner-text hero-corner-text-primary">Purpose Built</span>
+            <span className="hero-corner-text hero-corner-text-secondary">Purpose Built</span>
           </div>
 
           {/* Main title */}

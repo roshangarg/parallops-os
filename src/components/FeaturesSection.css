@@ -186,6 +186,10 @@
   z-index: 2;
 }
 
+.features-graphic-img-mobile {
+  display: none !important;
+}
+
 /* Duotone Noise Overlay strictly inside that inner box only */
 .features-inner-noise {
   position: absolute;
@@ -317,4 +321,235 @@
   letter-spacing: 0;
   text-transform: uppercase;
   color: #E0ECD9;
+}
+
+/* ==========================================================================
+   Mobile Screens
+   ========================================================================== */
+@media (max-width: 768px) {
+  .features-section {
+    width: 100%;
+    overflow-x: clip;
+    position: relative;
+    isolation: isolate;
+  }
+
+  .features-container {
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* 1. Top Track Block: All 9 alternating horizontal lines stacked to exact Figma specifications */
+  .features-left-col {
+    width: 390.086px;
+    max-width: 100%;
+    height: 281.625px;
+    min-height: 281.625px;
+    position: relative;
+    background-color: #000000;
+    overflow-x: clip;
+    overflow-y: visible;
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    z-index: 1;
+  }
+
+  /* Remove scanlines completely on mobile */
+  .features-left-grid {
+    display: none !important;
+  }
+
+  .features-v-track {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 390px;
+    max-width: 100%;
+    height: 281.625px;
+    position: relative;
+    padding: 0;
+    margin: 0 auto;
+    box-sizing: border-box;
+    z-index: 1;
+  }
+
+  .features-v-col {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 390px;
+    max-width: 100%;
+    height: 23px;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    overflow: visible;
+  }
+
+  .features-v-text {
+    position: static;
+    transform: none !important;
+    width: 390px;
+    max-width: 100%;
+    height: auto;
+    min-height: 23px;
+    line-height: 100%;
+    text-align: left;
+    white-space: nowrap;
+    font-family: var(--font-display, "Funnel Display", sans-serif);
+    font-weight: 800;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    margin: 0;
+    padding: 0 0 6px 0;
+    margin-bottom: -6px;
+    display: inline-block;
+    overflow: visible;
+  }
+
+  /* Built for businesses: font-size 33.49px, #E0ECD9 with monotone noise (size 0.11, density 64%, #0000008A) */
+  .features-v-text-built {
+    font-size: 33.49px;
+    color: #E0ECD9;
+
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cfilter id='fmn-mb'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4.5' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.64 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fmn-mb)' opacity='0.54'/%3E%3C/svg%3E"),
+      linear-gradient(#E0ECD9, #E0ECD9);
+    background-repeat: repeat, no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Not just computers: font-size 34.36px, semi-transparent #E0ECD957 with monotone noise (size 0.11, density 64%, #0000008A) */
+  .features-v-text-computers {
+    font-size: 34.36px;
+    color: rgba(224, 236, 217, 0.34);
+
+    background-image:
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60' viewBox='0 0 60 60'%3E%3Cfilter id='fmn-mc'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='4.5' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.64 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23fmn-mc)' opacity='0.54'/%3E%3C/svg%3E"),
+      linear-gradient(rgba(224, 236, 217, 0.34), rgba(224, 236, 217, 0.34));
+    background-repeat: repeat, no-repeat;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* 2. Features Content Block */
+  .features-right-col {
+    width: 100%;
+    min-height: auto;
+    height: auto;
+    position: relative;
+    background-color: #0B3414;
+    overflow: hidden;
+    /* padding: 38px 0 60px; */
+    box-sizing: border-box;
+    z-index: 1;
+  }
+
+  /* Remove scanlines and snake ticker on mobile */
+  .features-inner-grid,
+  .features-snake-canvas {
+    display: none !important;
+  }
+
+  /* Desktop Graphic Image is hidden on mobile */
+  .features-graphic-img-desktop {
+    display: none !important;
+  }
+
+  /* Mobile Graphic Image: starts at the very top of FeaturesSection (top: 0), color-dodges on top of text and green background */
+  .features-graphic-img-mobile {
+    display: block !important;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 500px;
+    height: 760px;
+    object-fit: cover;
+    object-position: center top;
+    mix-blend-mode: color-dodge;
+    opacity: 1;
+    pointer-events: none;
+    user-select: none;
+    z-index: 5;
+  }
+
+  /* Inner Box */
+  .features-inner-box {
+    position: relative;
+    top: auto;
+    bottom: auto;
+    left: auto;
+    right: auto;
+    border: none;
+    width: 100%;
+    z-index: 4;
+    overflow: visible;
+    padding: 40px 0px;
+  }
+
+  /* 4 Feature Items List: width 330.92px, centered with 29.54px side padding */
+  .features-inner-content {
+    width: 320.92px;
+    max-width: calc(100% - 40px);
+    height: auto;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 120px;
+    box-sizing: border-box;
+    z-index: 5;
+    position: relative;
+  }
+
+  /* Each Card */
+  .features-item {
+    width: 100%;
+    max-width: 100%;
+    min-height: auto;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Title: 22px font size, Funnel Display 800, #E0ECD9 */
+  .features-item-title {
+    width: 100%;
+    font-family: var(--font-display, "Funnel Display", sans-serif);
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 1.1;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #E0ECD9;
+    display: block;
+  }
+
+  /* Description: 11.5px font size, Azeret Mono 300 Light, #E0ECD9 */
+  .features-item-desc {
+    width: 100%;
+    font-family: var(--font-mono, "Azeret Mono", monospace);
+    font-weight: 300;
+    font-size: 11.5px;
+    line-height: 1.35;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #E0ECD9;
+    margin: 0;
+  }
 }

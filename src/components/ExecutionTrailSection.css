@@ -443,11 +443,227 @@
   z-index: 15;
 }
 
-/* Mobile responsive fallback */
-@media (max-width: 768px) {
+/* Mobile overlay hidden on desktop by default */
+.trail-mobile-only {
+  display: none !important;
+}
 
-  .trail-track-left,
-  .trail-track-right {
-    animation-duration: 40s;
+/* ========================================================
+   Mobile Screen (max-width: 768px)
+   ======================================================== */
+@media (max-width: 768px) {
+  .trail-desktop-only {
+    display: none !important;
+  }
+
+  .trail-mobile-only {
+    display: block !important;
+  }
+
+  /* Scanlines, dividers, noise overlay, marquee rows, boxes 2 & 3 hidden on mobile */
+  .trail-scanlines,
+  .trail-divider-vertical,
+  .trail-divider-horizontal,
+  .trail-noise-overlay,
+  .trail-bg-marquee,
+  .trail-box-2,
+  .trail-box-3 {
+    display: none !important;
+  }
+
+  /* Root section and container: full available screen width */
+  .trail-section {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    background-color: #000000 !important;
+    overflow-x: clip;
+    display: flex;
+    justify-content: center;
+  }
+
+  .trail-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 701.16px !important;
+    height: auto !important;
+    background-color: #000000 !important;
+    overflow: hidden !important;
+    position: relative !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  .trail-grid-layout {
+    position: relative !important;
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: auto !important;
+    grid-template-columns: none !important;
+    grid-template-rows: none !important;
+    inset: auto !important;
+  }
+
+  /* ========================================================
+     Box 1 (First Grid Video):
+     height: 401.16px, background #910BF8 with duotone noise
+     video rotated 90deg, mix-blend-mode: difference
+     ======================================================== */
+  .trail-box-1 {
+    position: relative !important;
+    width: 100% !important;
+    height: 401.16px !important;
+    min-height: 401.16px !important;
+    background-color: #910BF8 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .trail-box-1-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #910BF8;
+    z-index: 1;
+  }
+
+  .trail-box-1-noise {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .trail-box-1-video {
+    position: absolute !important;
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    mix-blend-mode: difference !important;
+    z-index: 3 !important;
+  }
+
+  /* Concentric Rotating Circles in Box 1:
+     width: 272.27px, height: 272.28px, top: 64.77px (5421.03 - 5356.26)
+     centered horizontally at left: 58.63px on 390px
+     mix-blend-mode: difference
+  */
+  .trail-box-1 .trail-badge-wrapper {
+    position: absolute !important;
+    top: 64.77px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 272.27px !important;
+    height: 272.28px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    pointer-events: none !important;
+    user-select: none !important;
+    mix-blend-mode: difference !important;
+    z-index: 6 !important;
+  }
+
+  .trail-circle-big {
+    position: absolute;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain;
+    transform-origin: center center;
+    animation: rotateBadgeClockwise 24s linear infinite;
+  }
+
+  .trail-circle-small {
+    position: absolute;
+    width: 253.8px !important;
+    height: 253.8px !important;
+    object-fit: contain;
+    transform-origin: center center;
+    animation: rotateBadgeAnticlockwise 18s linear infinite;
+  }
+
+  /* ========================================================
+     Box 4 (Fourth Grid Video):
+     height: 300px, top: 5757.41px
+     video: width 720px, height 300px, cropped from right side only
+     mix-blend-mode: hard-light
+     ======================================================== */
+  .trail-box-4 {
+    position: relative !important;
+    width: 100% !important;
+    height: 300px !important;
+    min-height: 300px !important;
+    background-color: #003858 !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    isolation: isolate;
+  }
+
+  .trail-box-4-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #003858;
+    z-index: 1;
+  }
+
+  .trail-box-4-noise {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Video starts at left: 0 and width: 720px (crops on right side only) */
+  .trail-box-4-video {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 720px !important;
+    max-width: none !important;
+    height: 300px !important;
+    mix-blend-mode: hard-light !important;
+    z-index: 3 !important;
+  }
+
+  /* Caption Text:
+     width: 182.61px, height: 92px, top: 181.46px (5938.87 - 5757.41), left: 12.39px
+     Azeret Mono Light 12px, justified, uppercase, #E0ECD9
+  */
+  .trail-box-4-caption {
+    position: absolute !important;
+    top: 181.46px !important;
+    bottom: auto !important;
+    left: 12.39px !important;
+    width: 182.61px !important;
+    max-width: 182.61px !important;
+    height: 92px !important;
+    font-family: var(--font-mono, 'Azeret Mono', monospace) !important;
+    font-weight: 300 !important;
+    font-style: normal !important;
+    font-size: 12px !important;
+    line-height: 1.12 !important;
+    letter-spacing: 0% !important;
+    text-align: justify !important;
+    text-justify: inter-word !important;
+    text-transform: uppercase !important;
+    color: #E0ECD9 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    pointer-events: none !important;
+    user-select: none !important;
+    z-index: 15 !important;
   }
 }

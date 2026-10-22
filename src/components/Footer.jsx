@@ -131,9 +131,14 @@ export default function Footer() {
           </a>
         </div>
 
-        {/* Copyright notice at top: 398.43px; right: 32px */}
-        <div className="footer-copyright" aria-label={`Copyright ${currentYear}`}>
+        {/* Copyright notice at top: 398.43px; right: 32px (Desktop) */}
+        <div className="footer-copyright footer-desktop-only" aria-label={`Copyright ${currentYear}`}>
           &copy; {currentYear}
+        </div>
+
+        {/* Mobile Copyright notice: top 285.25px, centered */}
+        <div className="footer-copyright-mobile footer-mobile-only" aria-label={`Copyright ${currentYear} all rights reserved`}>
+          &copy; {currentYear} all rights reserved
         </div>
 
         {/* Bottom Graphic: Large artistic Parallops OS graphic */}

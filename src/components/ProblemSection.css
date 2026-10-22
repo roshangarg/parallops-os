@@ -30,7 +30,7 @@
   height: 100%;
   pointer-events: none;
   overflow: hidden;
-  z-index: 5;
+  z-index: 1;
 }
 
 /* Dark duotone noise grain (Size 2 = lower baseFrequency, #000000) */
@@ -345,4 +345,238 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140' viewBox='0 0 140 140'%3E%3Cfilter id='pnw-bar'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0 0 0 0 0.878  0 0 0 0 0.925  0 0 0 0 0.851  0 0 0 1.4 -0.55'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23pnw-bar)' opacity='0.34'/%3E%3C/svg%3E");
   background-repeat: repeat;
   pointer-events: none;
+}
+
+/* ==========================================================================
+   Mobile Screens
+   ========================================================================== */
+@media (max-width: 768px) {
+  .problem-content {
+    padding: clamp(48px, 11vw, 64px) 18px 0;
+    box-sizing: border-box;
+    width: 100%;
+    align-items: center;
+  }
+
+  /* Top Section Header: width 354px, height 138px, left 18px (centered on 390px) */
+  .problem-top-header {
+    width: 354px;
+    max-width: 100%;
+    height: 138px;
+    padding: 0;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left;
+    gap: 0;
+  }
+
+  .problem-line {
+    width: 354px;
+    max-width: 100%;
+    line-height: 100%;
+    letter-spacing: 0;
+    white-space: nowrap;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Line 1: Hardware driver complexity - 21.18px, height 14px */
+  .problem-line-1 {
+    font-size: 21.18px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Line 2: Security & access fragment - 21.97px, height 15px */
+  .problem-line-2 {
+    font-size: 21.97px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Line 3: Stranded trouble shooting - 21.97px, height 15px */
+  .problem-line-3 {
+    font-size: 21.97px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Line 4: One size fits all os - 33.04px, height 22px, width 353px */
+  .problem-line-4 {
+    font-size: 33.04px;
+    height: 22px;
+    width: 353px;
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Sub Row container: width 354px, height 196px, top gap 34px (centered on 390px) */
+  .problem-sub-row {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 354px;
+    max-width: 100%;
+    height: 196px;
+    padding: 0;
+    margin: 34px auto 0;
+    box-sizing: border-box;
+  }
+
+  .problem-sub-col {
+    font-family: var(--font-mono);
+    font-weight: 100;
+    font-size: 12px;
+    line-height: 1.25;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: #E0ECD9;
+    width: 354px;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  /* 1. Traditional operating systems... - height 50px, justified */
+  .problem-sub-left {
+    height: 50px;
+    text-align: justify;
+    text-justify: inter-word;
+    display: block;
+  }
+
+  /* 2. --- This disconnect --- - height 8px, centered */
+  .problem-sub-center {
+    height: 8px;
+    text-align: center;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+  }
+
+  /* 3. forces applications to consume... - height 50px, justified */
+  .problem-sub-right {
+    height: 50px;
+    text-align: justify;
+    text-justify: inter-word;
+    display: block;
+  }
+
+  /* Banner Section: complete edge-to-edge width, height 232.885px */
+  .problem-banner-wrap {
+    position: relative;
+    width: calc(100% + 36px);
+    margin-left: -18px;
+    margin-right: -18px;
+    height: 232.885px;
+    margin-top: 34px;
+    overflow: hidden;
+  }
+
+  .problem-banner-img {
+    position: absolute;
+    top: 0;
+    left: -88px;
+    width: 566px;
+    min-width: 566px;
+    max-width: none;
+    height: 232.885px;
+    object-fit: cover;
+    mix-blend-mode: difference;
+    pointer-events: none;
+  }
+
+  .problem-banner-text-wrap {
+    position: absolute;
+    top: 45.44px;
+    left: 154.82px;
+    width: 141.52px;
+    height: 128px;
+    z-index: 2;
+    pointer-events: auto;
+  }
+
+  .problem-banner-text {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 1.18;
+    letter-spacing: 0;
+    text-align: justify;
+    text-justify: inter-word;
+    text-transform: uppercase;
+    color: #E0ECD9;
+    margin: 0;
+  }
+
+  /* Bottom Feature Header: width 354px, height 149px, top gap 16px */
+  .problem-bottom-header {
+    width: 354px;
+    max-width: 100%;
+    height: 149px;
+    padding: 0;
+    margin: 16px auto 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left;
+    gap: 0;
+    box-sizing: border-box;
+  }
+
+  .problem-bottom-line {
+    width: 354px;
+    max-width: 100%;
+    line-height: 100%;
+    letter-spacing: 0;
+    white-space: nowrap;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Line 1: Hardware Abstract - 30.84px, height 21px */
+  .problem-bottom-line-1 {
+    font-size: 30.84px;
+    height: 21px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Line 2: Policy & security fabric - 25.92px, height 17px */
+  .problem-bottom-line-2 {
+    font-size: 25.92px;
+    height: 17px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Line 3: Observability & telemetry - 23.59px, height 16px */
+  .problem-bottom-line-3 {
+    font-size: 23.59px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+  }
+
+  /* Line 4: Industry profiled - 34.37px, height ~23px */
+  .problem-bottom-line-4 {
+    font-size: 34.37px;
+    height: 23px;
+    display: flex;
+    align-items: center;
+  }
 }

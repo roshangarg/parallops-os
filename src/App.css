@@ -16,3 +16,23 @@
   width: 100%;
   box-shadow: none;
 }
+
+/* Hide horizontal scanlines / grid lines on mobile screens across all sections */
+@media (max-width: 768px) {
+  .hero-grid-lines,
+  .problem-grid-lines,
+  .features-grid-lines,
+  .features-top-grid-lines,
+  .features-left-grid,
+  .features-inner-grid,
+  .architecture-grid-lines,
+  .architecture-grid,
+  .see-deeper-grid,
+  .see-deeper-grid-lines,
+  .lifecycle-grid-lines,
+  .execution-trail-grid-lines,
+  .trail-scanlines {
+    display: none !important;
+  }
+}
+

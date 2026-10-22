@@ -315,13 +315,13 @@ export default function FeaturesSection() {
 
         {/* Right Side: with #0B3414 background, perimeter tickers, and framed inner box */}
         <div className="features-right-col" ref={rightColRef}>
-          {/* Floating graphic image overflowing into problem section above */}
+          {/* Floating graphic image overflowing into problem section above (desktop) */}
           <img
             src={featureImg}
             alt=""
             loading="lazy"
             decoding="async"
-            className="features-graphic-img"
+            className="features-graphic-img features-graphic-img-desktop"
             aria-hidden="true"
           />
 
@@ -348,6 +348,16 @@ export default function FeaturesSection() {
           </div>
         </div>
       </div>
+
+      {/* Floating graphic image for mobile (starts from top of section, color-dodges over text and background) */}
+      <img
+        src={featureImg}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        className="features-graphic-img-mobile"
+        aria-hidden="true"
+      />
     </section>
   )
 }
